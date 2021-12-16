@@ -16,5 +16,14 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.application,
       },
     ]);
+    routesService.add([
+      {
+        path: '/dashboard',
+        name: '::监视主屏',
+        iconClass: 'fas fa-home',
+        order: 1,
+        layout: eLayoutType.empty
+      },
+    ]);
   };
 }
