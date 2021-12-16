@@ -319,6 +319,15 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
+"@angular/cdk@^12.1.0":
+  version "12.2.13"
+  resolved "https://registry.npmmirror.com/@angular/cdk/download/@angular/cdk-12.2.13.tgz#1fdbe814adfd6b4ff906c6d9c4c6df07b83f09d8"
+  integrity sha512-zSKRhECyFqhingIeyRInIyTvYErt4gWo+x5DQr0b7YLUbU8DZSwWnG4w76Ke2s4U8T7ry1jpJBHoX/e8YBpGMg==
+  dependencies:
+    tslib "^2.2.0"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~12.0.0":
   version "12.0.5"
   resolved "https://registry.npmmirror.com/@angular/cli/download/@angular/cli-12.0.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40angular%2Fcli%2Fdownload%2F%40angular%2Fcli-12.0.5.tgz#0b1c77fd1516743f2609ebe8036d3da7379607b2"
@@ -439,6 +448,14 @@
   version "11.0.1"
   resolved "https://registry.npmmirror.com/@ant-design/icons-angular/download/@ant-design/icons-angular-11.0.1.tgz#8ff3131f3d9b4b25fd28c64c4a9bdfe36da54942"
   integrity sha1-j/MTHz2bSyX9KMZMSpvf422lSUI=
+  dependencies:
+    "@ant-design/colors" "^5.0.0"
+    tslib "^2.0.0"
+
+"@ant-design/icons-angular@^12.0.3":
+  version "12.0.3"
+  resolved "https://registry.npmmirror.com/@ant-design/icons-angular/download/@ant-design/icons-angular-12.0.3.tgz#3e99aa99ceebb978384a2926d06da19c043fc4bd"
+  integrity sha1-Ppmqmc7ruXg4Sikm0G2hnAQ/xL0=
   dependencies:
     "@ant-design/colors" "^5.0.0"
     tslib "^2.0.0"
@@ -6054,6 +6071,16 @@ ng-zorro-antd@^11.0.0:
     resize-observer-polyfill "^1.5.1"
     tslib "^2.0.0"
 
+ng-zorro-antd@^12.1.0:
+  version "12.1.0"
+  resolved "https://registry.npmmirror.com/ng-zorro-antd/download/ng-zorro-antd-12.1.0.tgz#64dd19e4da6d80215a1b3a76fad1257b670b40ff"
+  integrity sha512-tsL57G4RmnB+lfGsC0onxYIdZ32L1CbrZUW35I3lwn8pB37qU2W87u1AYDulZHlQbz7CMHhjEnnucYPWu3Ak3g==
+  dependencies:
+    "@angular/cdk" "^12.1.0"
+    "@ant-design/icons-angular" "^12.0.3"
+    date-fns "^2.10.0"
+    tslib "^2.2.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.nlark.com/nice-try/download/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -8571,7 +8598,7 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
+tslib@^2.0.0, tslib@^2.1.0, tslib@^2.2.0, tslib@^2.3.0:
   version "2.3.1"
   resolved "https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=

@@ -27,9 +27,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "allowedCommonJsDependencies": ["chart.js", "js-sha256"],
-            "assets": ["src/favicon.ico", "src/assets"],
+            "allowedCommonJsDependencies": [
+              "chart.js",
+              "js-sha256"
+            ],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
             "styles": [
+              "src/theme.less",
               {
                 "input": "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                 "inject": true,
@@ -128,15 +135,23 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
