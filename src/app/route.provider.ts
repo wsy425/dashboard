@@ -25,5 +25,14 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.empty
       },
     ]);
+    routesService.add([
+      {
+        path: '/login',
+        name: '::登录',
+        iconClass: 'fas fa-home',
+        order: 1,
+        layout: eLayoutType.empty
+      },
+    ]);
   };
 }

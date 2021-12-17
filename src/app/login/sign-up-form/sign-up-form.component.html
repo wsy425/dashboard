@@ -1,0 +1,21 @@
+<div class="form">
+    <div class="name">注册</div>
+    <form nz-form [formGroup]="signupForm">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="用户名不能为空">
+                <input type="text" formControlName="userName" placeholder="用户名" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="必须符合邮箱规则">
+                <input type="email" formControlName="email" placeholder="邮箱" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="密码至少6位且包含小写字母与数字">
+                <input type="password" formControlName="password" placeholder="密码" />
+            </nz-form-control>
+        </nz-form-item>
+        <button>注册</button>
+    </form>
+</div>

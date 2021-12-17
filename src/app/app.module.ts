@@ -19,9 +19,11 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { LoginModule } from './login/login.module';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 registerLocaleData(zh);
 
@@ -42,9 +44,12 @@ registerLocaleData(zh);
     NgxsModule.forRoot(),
     ThemeBasicModule.forRoot(),
     DashboardModule,
+    LoginModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    NzButtonModule
+    NzButtonModule,
+    NzFormModule
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER, { provide: NZ_I18N, useValue: zh_CN }],
