@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { LoginModule } from './login/login.module';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(zh);
 
@@ -49,7 +50,8 @@ registerLocaleData(zh);
     ReactiveFormsModule,
     HttpClientModule,
     NzButtonModule,
-    NzFormModule
+    NzFormModule,
+    NzMessageModule
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER, { provide: NZ_I18N, useValue: zh_CN }],
