@@ -7,10 +7,11 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-            <nz-form-control nzErrorTip="密码至少6位且包含小写字母与数字">
+            <nz-form-control nzErrorTip="密码应为6~10位且包含小写字母与数字">
                 <input type="password" formControlName="password" placeholder="密码" />
             </nz-form-control>
         </nz-form-item>
+        <div class="reset-text">忘记密码？请点击这里<label (click)="resetModal()">前去找回</label></div>
         <button (click)="login()">登录</button>
     </form>
 </div>

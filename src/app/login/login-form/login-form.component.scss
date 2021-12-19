@@ -36,11 +36,28 @@ height: 4.2rem;
 border: none;
 color: white;
 font-size: 2.4rem;
-margin-top: 3rem;
+margin-top: 1rem;
 // margin-bottom: 2rem;
 }
 
-:host ::ng-deep .ant-form-item-explain.ant-form-item-explain-error{
+.form .reset-text{
+    font-size: 1.4rem;
+    color: #CBD1DE;
+    font-weight:600;
+    text-align:center
+  }
+.form .reset-text label{
+    font-size: 1.4rem;
+    font-weight:600;
+}
+.form label:hover {
+    text-decoration: underline;
+    color: #F9896B;
+    cursor: pointer;
+  
+  }
+
+::ng-deep .ant-form-item-explain.ant-form-item-explain-error{
     font-size: 1.2rem;
     color: #F9896B;
 }

@@ -1,0 +1,26 @@
+<form nz-form [formGroup]="resetForm">
+    <nz-form-item>
+        <nz-form-control nzErrorTip="用户名不能为空">
+            <input type="text" formControlName="userName" placeholder="用户名" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzErrorTip="必须符合邮箱规则">
+            <input type="email" formControlName="email" placeholder="邮箱" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzErrorTip="密码应为6~10位且包含小写字母与数字">
+            <input type="password" formControlName="password" placeholder="新密码" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control [nzErrorTip]="passwordErrorTpl">
+            <input type="password" formControlName="password1" placeholder="确认新密码" />
+            <ng-template #passwordErrorTpl let-control>
+                <ng-container *ngIf="control.hasError('required')">请再次输入新密码</ng-container>
+                <ng-container *ngIf="control.hasError('confirm')">两侧输入的密码不一致</ng-container>
+            </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+</form>

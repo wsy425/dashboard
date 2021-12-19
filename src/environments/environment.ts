@@ -2,7 +2,7 @@ import { Environment } from '@abp/ng.core';
 
 const baseUrl = 'http://localhost:4900';
 
-export const accountUrl = "http://localhost:44395"
+export const accountUrl = "http://192.168.43.61:44340"
 
 export const environment = {
   production: false,
@@ -12,7 +12,7 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'https://localhost:44395',
+    issuer: 'http://192.168.43.61:44340',
     redirectUri: baseUrl,
     clientId: 'Dashboard_App',
     responseType: 'code',
@@ -21,7 +21,7 @@ export const environment = {
   },
   apis: {
     default: {
-      url: 'https://localhost:44395',
+      url: 'http://192.168.43.61:44340',
       rootNamespace: 'Dashboard',
     },
   },

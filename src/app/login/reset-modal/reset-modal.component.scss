@@ -1,0 +1,26 @@
+::ng-deep .ant-modal-title{
+    color: #9590C7;
+    font-size: 3rem;
+}
+
+::ng-deep .ant-btn:hover, .ant-btn:focus{
+    color: #9590C7;
+    border-color: #9590C7;
+}
+
+::ng-deep .ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    border-color: #bdbad4;
+    background: #bdbad4;
+}
+nz-form-control{
+    text-align: center;
+}
+
+input{
+    width: 80%;
+    outline: none;
+    border: 0;
+   border-bottom: 0.25rem solid rgba(81, 69, 158, 0.58);
+   background-color: transparent;
+}
