@@ -8,10 +8,11 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { ResetModalComponent } from '../reset-modal/reset-modal.component'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { accountUrl } from 'src/environments/environment'
+import { ConfigStateService } from '@abp/ng.core';
 
 
 interface LoginParams {
-  userName: string;
+  username: string;
   password: string;
   rememberMe?: boolean;
   redirectUrl?: string;
@@ -36,40 +37,29 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private http: HttpClient, private oAuthService: OAuthService, private authService: AuthService, private router: Router, private alert: AlertService, private modal: NzModalService) { }
   loginForm = new FormGroup({
-    userName: new FormControl(null, [Validators.required]),
+    username: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required, Validators.pattern(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,10}$/)]),
   })
   rem = document.body.clientWidth / 192;
 
   login() {
-    let user = {
-      userNameOrEmailAddress: this.loginForm.value.userName,
+    let user: LoginParams = {
+      username: this.loginForm.value.username,
       password: this.loginForm.value.password,
       rememberMe: true
     }
-    // this.authService.login(user)
-    //   .toPromise()
-    //   .then(data => {
-    //     console.log(data)
-    //     // this.router.navigateByUrl('/dashboard');
-    //   })
-    //   .catch(() => {
-    //     this.alert.MessageAlert('error', "您输入的用户名或密码不正确", 3000)
-    //   });
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-    let api = accountUrl + '/api/account/login'
     console.log(user)
-    this.http.post(api, user, httpOptions).subscribe((response: responseProps) => {
-      console.log(response)
-      if (response.result === 1) {
-        this.alert.MessageAlert('success', "恭喜您登录成功", 1000)
+    this.authService.login(user)
+      .toPromise()
+      .then(data => {
+        this.alert.MessageAlert('success', "恭喜您登录成功！", 1000)
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');
         }, 1000)
-      } else {
-        this.alert.MessageAlert('error', "您的用户名或者密码错误", 3000)
-      }
-    });
+      })
+      .catch(() => {
+        this.alert.MessageAlert('error', "您输入的用户名或密码不正确！", 3000)
+      });
   }
 
   resetModal() {
@@ -89,7 +79,10 @@ export class LoginFormComponent implements OnInit {
           type: 'primary',
           loading: false,
           onClick(component): void {
-            this.loading = true; // 让提交按钮显示加载动画，防止重复提交
+            this.loading = true;// 让提交按钮显示加载动画，防止重复提交
+            setTimeout(() => {
+              this.loading = false
+            }, 3000)
             component.reset();
           }
         },

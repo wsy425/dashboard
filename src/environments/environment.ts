@@ -12,16 +12,17 @@ export const environment = {
     logoUrl: '',
   },
   oAuthConfig: {
-    issuer: 'http://192.168.43.61:44340',
-    redirectUri: baseUrl,
+    issuer: accountUrl,
+    tokenEndpoint: accountUrl + '/connect/token',
     clientId: 'Dashboard_App',
-    responseType: 'code',
-    scope: 'offline_access openid profile role email phone Dashboard',
-    requireHttps: true
+    requestAccessToken: true,
+    dummyClientSecret: '1q2w3e*',
+    requireHttps: false,
+    scope: 'offline_access Dashboard',
   },
   apis: {
     default: {
-      url: 'http://192.168.43.61:44340',
+      url: accountUrl,
       rootNamespace: 'Dashboard',
     },
   },
