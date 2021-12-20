@@ -1,0 +1,29 @@
+.nav {
+    background-color: #C4D3F9;
+    height: 6rem;
+    margin-bottom: 1rem;
+}
+
+.nav .title {
+    font-size: 3.6rem;
+    font-weight: bold;
+    padding-left: 4rem
+}
+
+button {
+    background: linear-gradient(90deg, #51459E 0%, #9A93C7 100%);
+    box-shadow: 0px 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+    border-radius: 2.4rem;
+    border: none;
+    color: white;
+    width: 8.4rem;
+    font-size: 1.8rem;
+    height: 3.3rem;
+    margin: 1rem 0.5rem;
+    float: right;
+}
+nz-avatar{
+    float: right;
+    margin: 0.3rem 0.5rem;
+    margin-right: 2rem;
+}

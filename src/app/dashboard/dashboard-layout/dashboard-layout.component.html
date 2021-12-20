@@ -1,4 +1,29 @@
-<div style="font-size: 3rem;height: 96rem;width: 96rem;background-color: aqua;">
-    新页面测试代码
+<app-nav></app-nav>
+<div nz-row class="main" nzJustify="space-around">
+    <div nz-col [nzSpan]="5" class="left">
+        <div style="height: 29.6rem;">关键数据状态卡片</div>
+        <div style="height: 32.2rem;">统计量饼图</div>
+        <div style="height: 28.6rem;">异常参数列表</div>
+    </div>
+    <div nz-col [nzSpan]="12" class="middle">
+        <div style="height: 100%;">
+            <nz-tabset nzCentered>
+                <nz-tab nzTitle="系统数据源1">
+                    <ng-template nz-tab>
+                    </ng-template>
+                </nz-tab>
+                <nz-tab nzTitle="系统数据源2">
+                    <ng-template nz-tab>
+                    </ng-template>
+                </nz-tab>
+                <nz-tab nzTitle="系统数据源3">
+                    <ng-template nz-tab>
+                    </ng-template>
+                </nz-tab>
+            </nz-tabset>
+        </div>
+    </div>
+    <div nz-col [nzSpan]="6" class="right">
+        <div style="height: 100%;">右侧多功能列表</div>
+    </div>
 </div>
-<button nz-button nzType="primary">Primary Button</button>

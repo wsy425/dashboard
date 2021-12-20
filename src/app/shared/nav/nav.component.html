@@ -1,0 +1,39 @@
+<div nz-row nzJustify="space-between" nzAlign="middle" class="nav">
+    <div nz-col nzSpan="5" class="title">XXX系统</div>
+    <div nz-col nzSpan="4" class="router">状态检测 检测报告 统计分析</div>
+    <div nz-col nzSpan="5" class="menu">
+        <nz-avatar [nzSize]="iconRem" nzIcon="user" nz-dropdown nzTrigger="hover" [nzDropdownMenu]="IDMenu"></nz-avatar>
+        <nz-dropdown-menu #IDMenu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>头像设置</li>
+                <li nz-menu-item>个人信息设置</li>
+                <li nz-menu-item>系统权限管理</li>
+            </ul>
+        </nz-dropdown-menu>
+        <button nz-dropdown nzTrigger="hover" [nzDropdownMenu]="setMenu">设置</button>
+        <nz-dropdown-menu #setMenu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>传感器阈值设置</li>
+                <li nz-menu-item>XXX待定</li>
+            </ul>
+        </nz-dropdown-menu>
+        <button nz-dropdown nzTrigger="hover" [nzDropdownMenu]="fileMenu">文件</button>
+        <nz-dropdown-menu #fileMenu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>数据导入</li>
+                <li nz-menu-item>数据导出</li>
+                <li nz-menu-item>历史故障信息下载</li>
+                <li nz-menu-item>帮助文档下载</li>
+            </ul>
+        </nz-dropdown-menu>
+        <button nz-dropdown nzTrigger="hover" [nzDropdownMenu]="algorithmMenu">算法</button>
+        <nz-dropdown-menu #algorithmMenu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item>手动算法</li>
+                <li nz-menu-item>专家系统</li>
+                <li nz-menu-item>历史数据查看</li>
+            </ul>
+        </nz-dropdown-menu>
+
+    </div>
+</div>

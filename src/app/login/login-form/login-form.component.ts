@@ -48,7 +48,6 @@ export class LoginFormComponent implements OnInit {
       password: this.loginForm.value.password,
       rememberMe: true
     }
-    console.log(user)
     this.authService.login(user)
       .toPromise()
       .then(data => {

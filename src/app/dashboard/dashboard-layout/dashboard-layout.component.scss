@@ -1,0 +1,24 @@
+.left div,.middle div,.right div{
+    background-color:white;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 0px;
+}
+.left div{
+    margin-bottom: 3rem;
+}
+
+.left div:last-child{
+    margin-bottom: 0;
+}
+
+::ng-deep .ant-tabs-top > .ant-tabs-nav::before{
+    border: none;
+}
+::ng-deep .ant-tabs-tab{
+    font-size: 1.6rem;
+    padding: 1.2rem 0;
+}
+::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    font-size: 1.7rem;
+    font-weight: 500;
+}
