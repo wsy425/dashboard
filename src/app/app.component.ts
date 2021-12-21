@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as echarts from 'echarts';
+import { myDefault } from './shared/echarts-theme';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
     <abp-dynamic-layout></abp-dynamic-layout>
   `,
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    echarts.registerTheme("Default", myDefault);
+  }
+}
