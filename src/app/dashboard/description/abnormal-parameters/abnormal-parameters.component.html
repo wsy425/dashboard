@@ -1,0 +1,6 @@
+<ng-container *ngFor="let data of listOfData; let i = index">
+    <li>
+        <span [style.background-color]="this.data.statusBar" class="statusBar"></span>
+        <span>{{data.description}}</span>
+    </li>
+</ng-container>

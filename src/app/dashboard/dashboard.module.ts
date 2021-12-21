@@ -5,6 +5,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { StatusPanelComponent } from './status-panel/status-panel.component';
 import { StatisticsComponent } from './statistics/statistics.component'
+import { DescriptionComponent } from './description/description.component';
+import { AbnormalParametersComponent } from './description/abnormal-parameters/abnormal-parameters.component';
+import { DiagnosticResultsComponent } from './description/diagnostic-results/diagnostic-results.component';
+import { RecommendationComponent } from './description/recommendation/recommendation.component';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -12,11 +16,17 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 
 
+
+
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     StatusPanelComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    DescriptionComponent,
+    AbnormalParametersComponent,
+    DiagnosticResultsComponent,
+    RecommendationComponent
   ],
   imports: [
     CommonModule,

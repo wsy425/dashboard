@@ -29,6 +29,7 @@ export class StatisticsComponent implements OnInit {
       left: 'center',
       itemGap: 2 * this.rem,
       itemWidth: 0.8 * this.rem,
+      itemHeight: 1.4 * this.rem,
       textStyle: {
         fontSize: 1.2 * this.rem,
         color: "#9CA0AB"
@@ -48,7 +49,7 @@ export class StatisticsComponent implements OnInit {
         label: {
           show: false,
           position: 'center',
-          formatter: '{b}\n{c}'
+          formatter: '{b}\n{c}\n{d}%'
         },
         emphasis: {
           label: {

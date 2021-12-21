@@ -1,7 +1,8 @@
 .left .mainMonitor div,.left .pieChart,.left .Word,.middle div,.right div{
     background-color:white;
-    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 10px 0px;
+    box-shadow: 0.8rem 0.8rem 0.8rem rgba(0, 0, 0, 0.25);
+    border-radius: 1rem 0px;
+    border: rgba(156, 160, 171,0.3) solid 0.1rem;
 }
 .left .mainMonitor,.left .pieChart,.left .Word{
     margin-bottom: 2rem;
