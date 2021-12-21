@@ -1,13 +1,22 @@
 <div nz-row nzJustify="space-between" nzAlign="middle" class="nav">
-    <div nz-col nzSpan="5" class="title">XXX系统</div>
-    <div nz-col nzSpan="4" class="router">状态检测 检测报告 统计分析</div>
+    <div nz-col nzSpan="5" class="title"><span>XXX系统</span>
+        <span class="time">{{time}}</span>
+    </div>
+    <div nz-col nzSpan="5" class="router">
+        <a routerLink="/dashboard" routerLinkActive="active">状态监测</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a routerLink="/dashboard" routerLinkActive="active">检测报告</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a routerLink="/dashboard" routerLinkActive="active">统计分析</a>
+
+    </div>
     <div nz-col nzSpan="5" class="menu">
-        <nz-avatar [nzSize]="iconRem" nzIcon="user" nz-dropdown nzTrigger="hover" [nzDropdownMenu]="IDMenu"></nz-avatar>
+        <nz-avatar [nzSize]="iconRem" nzText="User" nz-dropdown nzTrigger="hover" [nzDropdownMenu]="IDMenu"></nz-avatar>
         <nz-dropdown-menu #IDMenu="nzDropdownMenu">
             <ul nz-menu>
-                <li nz-menu-item>头像设置</li>
                 <li nz-menu-item>个人信息设置</li>
                 <li nz-menu-item>系统权限管理</li>
+                <li nz-menu-item>账号注销</li>
             </ul>
         </nz-dropdown-menu>
         <button nz-dropdown nzTrigger="hover" [nzDropdownMenu]="setMenu">设置</button>

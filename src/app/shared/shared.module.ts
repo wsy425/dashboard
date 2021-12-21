@@ -8,6 +8,7 @@ import { NavComponent } from './nav/nav.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzGridModule,
     NzAvatarModule,
     NzDropDownModule,
-    NzIconModule
+    NzIconModule,
+    NzDividerModule
   ],
   exports: [
     CoreModule,
