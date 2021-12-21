@@ -1,0 +1,30 @@
+.panel {
+    position: relative;
+}
+
+.panel .status {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.panel .value {
+    font-size: 3.6rem;
+    font-weight: 600;
+    position: absolute;
+    top:1.6rem;
+    left:1.5rem;
+}
+
+.panel .description {
+    font-size: 1.2rem;
+    color: #9CA0AB;
+    position: absolute;
+    top:7.5rem;
+    left:2.5rem;
+}
+.panel .description .unit {
+    margin-bottom: 0.5rem;
+}

@@ -5,12 +5,16 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { StatusPanelComponent } from './status-panel/status-panel.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 
 @NgModule({
   declarations: [
-    DashboardLayoutComponent
+    DashboardLayoutComponent,
+    StatusPanelComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,13 @@
-.left div,.middle div,.right div{
+.left .mainMonitor div,.left .pieChart,.left .Word,.middle div,.right div{
     background-color:white;
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
     border-radius: 10px 0px;
 }
-.left div{
-    margin-bottom: 3rem;
+.left .mainMonitor,.left .pieChart,.left .Word{
+    margin-bottom: 2rem;
+}
+.left .mainMonitor:first-child{
+    margin-bottom: 1rem;
 }
 
 .left div:last-child{
