@@ -2,7 +2,7 @@ import { Environment } from '@abp/ng.core';
 
 const baseUrl = 'http://localhost:4900';
 
-export const accountUrl = "http://192.168.43.48:44340"
+export const accountUrl = "http://192.168.43.61:44340"
 
 export const environment = {
   production: false,

@@ -24,9 +24,10 @@
             <app-description></app-description>
         </div>
     </div>
-    <div nz-col [nzSpan]="12" class="middle">
+    <div nz-col [nzSpan]="13" class="middle">
+        <span>状态：查看</span>
         <div style="height: 100%;">
-            <nz-tabset nzCentered>
+            <nz-tabset nzCentered [nzTabBarExtraContent]="Multifunction">
                 <nz-tab nzTitle="系统数据源1">
                     <ng-template nz-tab>
                     </ng-template>
@@ -40,9 +41,15 @@
                     </ng-template>
                 </nz-tab>
             </nz-tabset>
+            <ng-template #Multifunction>
+                <button (click)="switchFunction()">查看{{funtion ? '单个':'整体'}}</button>
+            </ng-template>
         </div>
     </div>
     <div nz-col [nzSpan]="6" class="right">
-        <div style="height: 100%;">右侧多功能列表</div>
+        <div style="height: 100%;">
+            <app-overall-parameters *ngIf="funtion"></app-overall-parameters>
+            <app-single-parameter *ngIf="!funtion"></app-single-parameter>
+        </div>
     </div>
 </div>

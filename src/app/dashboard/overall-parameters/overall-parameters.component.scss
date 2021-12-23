@@ -1,0 +1,40 @@
+.statusBar{
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+}
+::ng-deep .ant-table-title{
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: 600;
+    background-color: #F2F7FF;
+}
+
+::ng-deep .ant-table{
+    color: black;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+}
+
+::ng-deep .ant-table-thead > tr > th{
+    background: #C4D3F9;
+    font-size: 1.6rem;
+    border-bottom: 0.1rem solid #9CA0AB
+}
+
+::ng-deep .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+    padding: 1.6rem 1.6rem;
+}
+
+::ng-deep .ant-table-tbody > tr.ant-table-row:hover > td{
+    background: #F2F7FF;
+}
+
+::ng-deep .ant-table-tbody > tr > td{
+    border-bottom: 0.1rem solid #9CA0AB;
+}
+::ng-deep .ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+    width: 0.1rem;
+    height: 3rem;
+    background-color: #9CA0AB;
+}

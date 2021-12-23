@@ -1,0 +1,21 @@
+<nz-table #realParamsTable [nzData]="listOfData" nzTitle="实时参数列表" [nzHideOnSinglePage]=true [nzSimple]=true
+    style="height:100%;" [nzPageSize]="12">
+    <thead>
+        <tr>
+            <th *ngFor="let column of listOfColumns" [nzSortOrder]="column.sortOrder" [nzSortFn]="column.sortFn"
+                nzAlign="center" nzShowSort=false>
+                {{ column.name }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of realParamsTable.data">
+            <td nzAlign="center">
+                <span [style.background-color]="data.statusBar" class="statusBar"></span>
+            </td>
+            <td nzAlign="center">{{ data.chineseName }}</td>
+            <td nzAlign="center">{{ data.numericalValue }}</td>
+            <td nzAlign="center">{{data.unit}}</td>
+        </tr>
+    </tbody>
+</nz-table>
