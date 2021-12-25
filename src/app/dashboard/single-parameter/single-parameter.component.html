@@ -1,1 +1,48 @@
-<p>single-parameter works!</p>
+<div class="main">
+    <div class="chineseName">
+        <div class="laber">
+            中文名
+        </div>
+        <div class="info">
+            奇奇怪怪中文名奇奇怪怪中文名
+        </div>
+    </div>
+
+    <div class="parameterName">
+        <div class="laber">
+            型号
+        </div>
+        <div class="info">
+            <input [(ngModel)]="paraID" [disabled]="!editMode" />
+        </div>
+    </div>
+
+    <div class="buttonGroup">
+        <div class="button">
+            <button (click)="switch()">{{ editMode?'查看':'编辑' }}</button>
+        </div>
+        <div class="button">
+            <button (click)="createSensor()" [disabled]="!editMode">创建</button>
+        </div>
+        <div class="button">
+            <button (click)="inquireSensor()" [disabled]="!editMode">查询</button>
+        </div>
+        <div class="button">
+            <button (click)="deleteSensor()" [disabled]="!editMode">删除</button>
+        </div>
+        <div class="button">
+            <button (click)="saveSensor()" [disabled]="!editMode">保存</button>
+        </div>
+    </div>
+
+    <div class="timeDomainChart">
+        <app-time-domain-chart [sensorID]="sensorID"></app-time-domain-chart>
+    </div>
+
+    <div class="frequencyDomainChart">
+        <app-frequency-domain-chart [sensorID]="sensorID"></app-frequency-domain-chart>
+    </div>
+
+    <button nz-button nzType="primary" nzBlock>设置系统主视图</button>
+    <button nz-button nzType="primary" nzBlock>保存页面配置至服务器</button>
+</div>

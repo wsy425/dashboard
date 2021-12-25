@@ -13,10 +13,10 @@ export class DashboardLayoutComponent implements OnInit {
   hGutter = 2 * this.rem
   vGutter = 3 * this.rem
   index = ['1号传感器', '2号传感器', '3号传感器', '4号传感器']
-  funtion = true
+  function = true
 
   switchFunction() {
-    this.funtion = !this.funtion
+    this.function = !this.function
   }
 
   ngOnInit(): void {

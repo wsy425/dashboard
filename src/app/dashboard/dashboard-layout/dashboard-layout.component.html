@@ -1,6 +1,8 @@
 <app-nav></app-nav>
+
 <div nz-row class="main" nzJustify="space-around" style="width: 99%;margin: auto;">
     <div nz-col [nzSpan]="4" class="left">
+
         <div nz-row nzJustify="space-between" style="height: 13.3rem;" class="mainMonitor">
             <div nz-col nzSpan="10">
                 <app-status-panel [index]="this.index[0]"></app-status-panel>
@@ -17,14 +19,18 @@
                 <app-status-panel [index]="this.index[3]"></app-status-panel>
             </div>
         </div>
+
         <div style="height: 30rem;" class="pieChart">
             <app-statistics></app-statistics>
         </div>
+
         <div style="height: 28rem;" class="Word">
             <app-description></app-description>
         </div>
+
     </div>
     <div nz-col [nzSpan]="13" class="middle">
+
         <span>状态：查看</span>
         <div style="height: 100%;">
             <nz-tabset nzCentered [nzTabBarExtraContent]="Multifunction">
@@ -42,14 +48,17 @@
                 </nz-tab>
             </nz-tabset>
             <ng-template #Multifunction>
-                <button (click)="switchFunction()">查看{{funtion ? '单个':'整体'}}</button>
+                <button (click)="switchFunction()">查看{{function ? '单个':'整体'}}</button>
             </ng-template>
         </div>
+
     </div>
     <div nz-col [nzSpan]="6" class="right">
+
         <div style="height: 100%;">
-            <app-overall-parameters *ngIf="funtion"></app-overall-parameters>
-            <app-single-parameter *ngIf="!funtion"></app-single-parameter>
+            <app-overall-parameters *ngIf="function"></app-overall-parameters>
+            <app-single-parameter *ngIf="!function"></app-single-parameter>
         </div>
+
     </div>
 </div>

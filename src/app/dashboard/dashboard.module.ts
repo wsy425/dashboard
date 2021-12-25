@@ -18,6 +18,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { TimeDomainChartComponent } from './single-parameter/time-domain-chart/time-domain-chart.component';
+import { FrequencyDomainChartComponent } from './single-parameter/frequency-domain-chart/frequency-domain-chart.component';
 
 
 
@@ -34,7 +36,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     DiagnosticResultsComponent,
     RecommendationComponent,
     OverallParametersComponent,
-    SingleParameterComponent
+    SingleParameterComponent,
+    TimeDomainChartComponent,
+    FrequencyDomainChartComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +50,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
-    NzTableModule
+    NzTableModule,
   ]
 })
 export class DashboardModule { }
