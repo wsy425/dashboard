@@ -1,4 +1,6 @@
+import { rendererTypeName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FabricService } from '../../service/fabric.service';
 
 @Component({
   selector: 'app-single-parameter',
@@ -6,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-parameter.component.scss']
 })
 export class SingleParameterComponent implements OnInit {
+  rem = document.body.clientWidth / 192;
 
-  constructor() { }
+  constructor(public fabricService: FabricService) { }
   paraID = "QQGG001"
-  editMode = false
   sensorID = "QQGG001"
 
   // 编辑/查看按钮功能
   switch() {
-    this.editMode = !this.editMode
+    this.fabricService.editMode = !this.fabricService.editMode
   }
 
   // 创建按钮功能
@@ -35,9 +37,15 @@ export class SingleParameterComponent implements OnInit {
 
   // 保存按钮功能
   saveSensor() {
-    this.editMode = !this.editMode
+    this.fabricService.editMode = !this.fabricService.editMode
     this.deliver()
   }
+
+  // 设置系统主视图按钮功能
+  imageSetting() {
+    this.fabricService.setBackground('assets/back.jpg', 100 * this.rem, 75 * this.rem)
+  }
+
 
   ngOnInit(): void {
   }

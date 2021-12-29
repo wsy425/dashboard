@@ -20,6 +20,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { TimeDomainChartComponent } from './single-parameter/time-domain-chart/time-domain-chart.component';
 import { FrequencyDomainChartComponent } from './single-parameter/frequency-domain-chart/frequency-domain-chart.component';
+import { MainViewComponent } from './main-view/main-view.component';
 
 
 
@@ -38,7 +39,8 @@ import { FrequencyDomainChartComponent } from './single-parameter/frequency-doma
     OverallParametersComponent,
     SingleParameterComponent,
     TimeDomainChartComponent,
-    FrequencyDomainChartComponent
+    FrequencyDomainChartComponent,
+    MainViewComponent
   ],
   imports: [
     CommonModule,

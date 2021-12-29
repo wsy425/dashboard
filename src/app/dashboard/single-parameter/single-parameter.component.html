@@ -13,25 +13,25 @@
             型号
         </div>
         <div class="info">
-            <input [(ngModel)]="paraID" [disabled]="!editMode" />
+            <input [(ngModel)]="paraID" [disabled]="!this.fabricService.editMode" />
         </div>
     </div>
 
     <div class="buttonGroup">
         <div class="button">
-            <button (click)="switch()">{{ editMode?'查看':'编辑' }}</button>
+            <button (click)="switch()">{{ this.fabricService.editMode?'查看':'编辑' }}</button>
         </div>
         <div class="button">
-            <button (click)="createSensor()" [disabled]="!editMode">创建</button>
+            <button (click)="createSensor()" [disabled]="!this.fabricService.editMode">创建</button>
         </div>
         <div class="button">
-            <button (click)="inquireSensor()" [disabled]="!editMode">查询</button>
+            <button (click)="inquireSensor()" [disabled]="!this.fabricService.editMode">查询</button>
         </div>
         <div class="button">
-            <button (click)="deleteSensor()" [disabled]="!editMode">删除</button>
+            <button (click)="deleteSensor()" [disabled]="!this.fabricService.editMode">删除</button>
         </div>
         <div class="button">
-            <button (click)="saveSensor()" [disabled]="!editMode">保存</button>
+            <button (click)="saveSensor()" [disabled]="!this.fabricService.editMode">保存</button>
         </div>
     </div>
 
@@ -43,6 +43,6 @@
         <app-frequency-domain-chart [sensorID]="sensorID"></app-frequency-domain-chart>
     </div>
 
-    <button nz-button nzType="primary" nzBlock>设置系统主视图</button>
+    <button nz-button nzType="primary" nzBlock (click)="imageSetting()">选择系统主视图</button>
     <button nz-button nzType="primary" nzBlock>保存页面配置至服务器</button>
 </div>

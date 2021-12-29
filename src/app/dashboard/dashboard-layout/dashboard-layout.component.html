@@ -31,25 +31,18 @@
     </div>
     <div nz-col [nzSpan]="13" class="middle">
 
-        <span>状态：查看</span>
+        <span>状态：{{this.fabricService.editMode?'编辑':'查看'}}</span>
+        <button (click)="switchFunction()">查看{{function ? '单个':'整体'}}</button>
         <div style="height: 100%;">
-            <nz-tabset nzCentered [nzTabBarExtraContent]="Multifunction">
-                <nz-tab nzTitle="系统数据源1">
-                    <ng-template nz-tab>
-                    </ng-template>
-                </nz-tab>
-                <nz-tab nzTitle="系统数据源2">
-                    <ng-template nz-tab>
-                    </ng-template>
-                </nz-tab>
-                <nz-tab nzTitle="系统数据源3">
-                    <ng-template nz-tab>
-                    </ng-template>
-                </nz-tab>
+            <nz-tabset nzCentered>
+                <div *ngFor="let source of sources">
+                    <nz-tab [nzTitle]="source">
+                        <ng-template nz-tab>
+                            <app-main-view [source]="source"></app-main-view>
+                        </ng-template>
+                    </nz-tab>
+                </div>
             </nz-tabset>
-            <ng-template #Multifunction>
-                <button (click)="switchFunction()">查看{{function ? '单个':'整体'}}</button>
-            </ng-template>
         </div>
 
     </div>

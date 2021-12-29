@@ -76,3 +76,6 @@
 ::ng-deep .ant-btn-primary:hover{
     background: linear-gradient(90deg, rgba(81, 69, 158, 0.5) 0%, #C4D3F9 100%);
 }
+:host ::ng-deep .ant-btn{
+    height: 3.2rem;
+}
