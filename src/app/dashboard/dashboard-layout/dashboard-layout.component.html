@@ -35,8 +35,8 @@
         <button (click)="switchFunction()">查看{{function ? '单个':'整体'}}</button>
         <div style="height: 100%;">
             <nz-tabset nzCentered>
-                <div *ngFor="let source of sources">
-                    <nz-tab [nzTitle]="source">
+                <div *ngFor="let source of this.sources">
+                    <nz-tab (nzClick)="switchSource(source)" [nzTitle]="source">
                         <ng-template nz-tab>
                             <app-main-view [source]="source"></app-main-view>
                         </ng-template>
