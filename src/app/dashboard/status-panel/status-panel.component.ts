@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SensorInfoService } from '../../service/sensor-info.service';
+
 
 @Component({
   selector: 'app-status-panel',
@@ -6,13 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./status-panel.component.scss']
 })
 export class StatusPanelComponent implements OnInit {
-  @Input() index: string
+  private _index: string;
+  @Input()
+  set index(index: string) {
+    this._index = index
+    this.chineseName = this.sensor.currentSensorDict[index]?.chineseName ?? ''
+    this.unit = this.sensor.currentSensorDict[index]?.unit ?? ''
+  }
 
-  constructor() { }
+  constructor(public sensor: SensorInfoService) { }
   statusBar = "#84E8F4"
   color = "black"
+  unit = "单位"
+  chineseName = ""
 
   ngOnInit(): void {
   }
+
 
 }

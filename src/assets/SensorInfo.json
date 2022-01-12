@@ -125,17 +125,69 @@
                         ]
                     ]
                 }
+            },
+            "TPL104": {
+                "chineseName": "四号传感器",
+                "characterName": "TPL104",
+                "unit": "rpm",
+                "warn": {
+                    "num": 3,
+                    "info": [
+                        "四号传感器数据高2",
+                        "四号传感器数据高1",
+                        "四号传感器数据等于预设值"
+                    ],
+                    "limitType": [
+                        "high",
+                        "high",
+                        "equal"
+                    ],
+                    "limitValue": [
+                        0.9,
+                        0.7,
+                        0.5
+                    ],
+                    "statusColor": [
+                        "#FF6466",
+                        "#FFD134",
+                        "#FFD134"
+                    ],
+                    "result": [
+                        [
+                            "就是发送的随机数过大"
+                        ],
+                        [
+                            "发送的随机数有点大"
+                        ],
+                        [
+                            "发送的随机数等于预设值"
+                        ]
+                    ],
+                    "operation": [
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ]
+                    ]
+                }
             }
         },
         "statusParam": [
             "TPL101",
             "TPL102",
-            "TPL103"
+            "TPL103",
+            "TPL104"
         ],
         "Algorithm": [
             "TPL101",
             "TPL102",
-            "TPL103"
+            "TPL103",
+            "TPL104"
         ],
         "highFrequency": [
             "TPL101"
@@ -262,17 +314,69 @@
                         ]
                     ]
                 }
+            },
+            "TPL204": {
+                "chineseName": "四号传感器",
+                "characterName": "TPL204",
+                "unit": "rpm",
+                "warn": {
+                    "num": 3,
+                    "info": [
+                        "四号传感器数据高2",
+                        "四号传感器数据高1",
+                        "四号传感器数据等于预设值"
+                    ],
+                    "limitType": [
+                        "high",
+                        "high",
+                        "equal"
+                    ],
+                    "limitValue": [
+                        0.9,
+                        0.7,
+                        0.5
+                    ],
+                    "statusColor": [
+                        "#FF6466",
+                        "#FFD134",
+                        "#FFD134"
+                    ],
+                    "result": [
+                        [
+                            "就是发送的随机数过大"
+                        ],
+                        [
+                            "发送的随机数有点大"
+                        ],
+                        [
+                            "发送的随机数等于预设值"
+                        ]
+                    ],
+                    "operation": [
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ]
+                    ]
+                }
             }
         },
         "statusParam": [
             "TPL201",
             "TPL202",
-            "TPL203"
+            "TPL203",
+            "TPL204"
         ],
         "Algorithm": [
             "TPL201",
             "TPL202",
-            "TPL203"
+            "TPL203",
+            "TPL204"
         ],
         "highFrequency": [
             "TPL201"
@@ -399,17 +503,69 @@
                         ]
                     ]
                 }
+            },
+            "TPL304": {
+                "chineseName": "四号传感器",
+                "characterName": "TPL304",
+                "unit": "rpm",
+                "warn": {
+                    "num": 3,
+                    "info": [
+                        "四号传感器数据高2",
+                        "四号传感器数据高1",
+                        "四号传感器数据等于预设值"
+                    ],
+                    "limitType": [
+                        "high",
+                        "high",
+                        "equal"
+                    ],
+                    "limitValue": [
+                        0.9,
+                        0.7,
+                        0.5
+                    ],
+                    "statusColor": [
+                        "#FF6466",
+                        "#FFD134",
+                        "#FFD134"
+                    ],
+                    "result": [
+                        [
+                            "就是发送的随机数过大"
+                        ],
+                        [
+                            "发送的随机数有点大"
+                        ],
+                        [
+                            "发送的随机数等于预设值"
+                        ]
+                    ],
+                    "operation": [
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ],
+                        [
+                            "随便你操作"
+                        ]
+                    ]
+                }
             }
         },
         "statusParam": [
             "TPL301",
             "TPL302",
-            "TPL303"
+            "TPL303",
+            "TPL304"
         ],
         "Algorithm": [
             "TPL301",
             "TPL302",
-            "TPL303"
+            "TPL303",
+            "TPL304"
         ],
         "highFrequency": [
             "TPL301"

@@ -9,12 +9,12 @@ import { SensorInfoService } from '../../service/sensor-info.service';
 })
 export class DashboardLayoutComponent implements OnInit {
   sources: Array<string>
+  index: Array<string> = ["", "", "", ""]
 
   constructor(public fabricService: FabricService, public sensor: SensorInfoService) { }
   rem = document.body.clientWidth / 192;
   hGutter = 2 * this.rem
   vGutter = 3 * this.rem
-  index = ['1号传感器', '2号传感器', '3号传感器', '4号传感器']
   function = true
 
 
@@ -32,6 +32,7 @@ export class DashboardLayoutComponent implements OnInit {
       if (this.sensor.sourceList != undefined) {
         this.sources = this.sensor.sourceList
         this.sensor.setSource(this.sources[0])
+        this.index = this.sensor.currentStatusList
         clearInterval(timer)
       }
     }, 1000)
