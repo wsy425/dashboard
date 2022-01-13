@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { SignalRService } from "../../service/signal-r.service"
+
 
 interface DataItem {
   statusBar: string,
@@ -21,7 +23,37 @@ interface ColumnItem {
 })
 export class OverallParametersComponent implements OnInit {
 
-  constructor() { }
+  constructor(public signalR: SignalRService) {
+  }
+
+
+
+
+  listOfColumns: ColumnItem[] = [
+    {
+      name: "状态",
+      sortOrder: 'dscend',
+      sortFn: (a: DataItem, b: DataItem) => a.statusBar.localeCompare(b.statusBar),
+    },
+    {
+      name: "名称",
+      sortOrder: null,
+      sortFn: null,
+    },
+    {
+      name: "数值",
+      sortOrder: null,
+      sortFn: null,
+    },
+    {
+      name: "单位",
+      sortOrder: null,
+      sortFn: null,
+    },
+  ]
+  ngOnInit(): void {
+  }
+
   listOfData = [
     {
       statusBar: "#84E8F4",
@@ -108,29 +140,4 @@ export class OverallParametersComponent implements OnInit {
       unit: "rpm"
     },
   ];
-
-  listOfColumns: ColumnItem[] = [
-    {
-      name: "状态",
-      sortOrder: 'dscend',
-      sortFn: (a: DataItem, b: DataItem) => a.statusBar.localeCompare(b.statusBar),
-    },
-    {
-      name: "名称",
-      sortOrder: null,
-      sortFn: null,
-    },
-    {
-      name: "数值",
-      sortOrder: null,
-      sortFn: null,
-    },
-    {
-      name: "单位",
-      sortOrder: null,
-      sortFn: null,
-    },
-  ]
-  ngOnInit(): void {
-  }
 }

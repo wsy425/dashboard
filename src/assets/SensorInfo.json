@@ -378,9 +378,7 @@
             "TPL203",
             "TPL204"
         ],
-        "highFrequency": [
-            "TPL201"
-        ]
+        "highFrequency": []
     },
     "S3": {
         "Dict": {
@@ -567,8 +565,6 @@
             "TPL303",
             "TPL304"
         ],
-        "highFrequency": [
-            "TPL301"
-        ]
+        "highFrequency": []
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FabricService } from '../../service/fabric.service';
 import { SensorInfoService } from '../../service/sensor-info.service';
+import { SignalRService } from '../../service/signal-r.service';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -11,7 +12,7 @@ export class DashboardLayoutComponent implements OnInit {
   sources: Array<string>
   index: Array<string> = ["", "", "", ""]
 
-  constructor(public fabricService: FabricService, public sensor: SensorInfoService) { }
+  constructor(public fabricService: FabricService, public sensor: SensorInfoService, public signalR: SignalRService) { }
   rem = document.body.clientWidth / 192;
   hGutter = 2 * this.rem
   vGutter = 3 * this.rem
@@ -24,6 +25,13 @@ export class DashboardLayoutComponent implements OnInit {
   switchSource(source) {
     this.fabricService.saveCanvas()
     this.sensor.setSource(source)
+    this.signalR.setSource(source)
+  }
+
+  ngDoCheck() {
+    if (this.signalR.Refresh) {
+      this.signalR.setSource(this.sensor.source)
+    }
   }
 
   ngOnInit(): void {
@@ -32,7 +40,9 @@ export class DashboardLayoutComponent implements OnInit {
       if (this.sensor.sourceList != undefined) {
         this.sources = this.sensor.sourceList
         this.sensor.setSource(this.sources[0])
+        this.signalR.setSource(this.sources[0])
         this.index = this.sensor.currentStatusList
+        console.log(this.signalR.Refresh)
         clearInterval(timer)
       }
     }, 1000)

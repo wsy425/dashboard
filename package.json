@@ -20,6 +20,7 @@
     "@abp/ng.tenant-management": "~4.4.4",
     "@abp/ng.theme.basic": "~4.4.4",
     "@abp/ng.theme.shared": "~4.4.4",
+    "@abp/signalr": "^5.1.1",
     "@angular/animations": "~12.0.0",
     "@angular/common": "~12.0.0",
     "@angular/compiler": "~12.0.0",
