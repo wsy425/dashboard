@@ -32,7 +32,7 @@
     <div nz-col [nzSpan]="13" class="middle">
 
         <span>状态：{{this.fabricService.editMode?'编辑':'查看'}}</span>
-        <button (click)="switchFunction()">查看{{function ? '单个':'整体'}}</button>
+        <button (click)="switchFunction()">查看{{this.fabricService.function ? '单个':'整体'}}</button>
         <div style="height: 100%;">
             <nz-tabset nzCentered>
                 <div *ngFor="let source of this.sources">
@@ -49,8 +49,8 @@
     <div nz-col [nzSpan]="6" class="right">
 
         <div style="height: 100%;">
-            <app-overall-parameters *ngIf="function"></app-overall-parameters>
-            <app-single-parameter *ngIf="!function"></app-single-parameter>
+            <app-overall-parameters *ngIf="this.fabricService.function"></app-overall-parameters>
+            <app-single-parameter *ngIf="!this.fabricService.function"></app-single-parameter>
         </div>
 
     </div>

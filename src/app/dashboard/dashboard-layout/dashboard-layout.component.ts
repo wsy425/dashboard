@@ -15,15 +15,15 @@ export class DashboardLayoutComponent implements OnInit {
   rem = document.body.clientWidth / 192;
   hGutter = 2 * this.rem
   vGutter = 3 * this.rem
-  function = true
 
 
   switchFunction() {
-    this.function = !this.function
+    this.fabricService.function = !this.fabricService.function
   }
 
   switchSource(source) {
-    console.log(source)
+    this.fabricService.saveCanvas()
+    this.sensor.setSource(source)
   }
 
   ngOnInit(): void {

@@ -10,6 +10,7 @@ export class SensorInfoService {
   currentStatusList: Array<string>;
   currentAlgorithmList: Array<string>;
   currentHighFrequencyList: Array<string>;
+  source: string;
 
   // 用于存储的信息
   sourceList: Array<string>;
@@ -35,6 +36,7 @@ export class SensorInfoService {
   }
 
   setSource(source) {
+    this.source = source
     this.currentSensorDict = this.sensorDict[source]
     this.currentStatusList = this.statusList[source]
     this.currentAlgorithmList = this.algorithmList[source]
