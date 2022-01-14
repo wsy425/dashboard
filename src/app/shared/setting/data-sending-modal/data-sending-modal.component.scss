@@ -1,0 +1,56 @@
+div{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+div .button{
+    vertical-align:bottom;
+    margin-left: 1rem;
+}
+div span{
+    font-size: 1.4rem;
+}
+::ng-deep .ant-modal-title{
+    color: #9590C7;
+    font-size: 3rem;
+}
+
+::ng-deep .ant-btn:hover, .ant-btn:focus{
+    color: #9590C7;
+    border-color: #9590C7;
+}
+
+::ng-deep .ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    border-color: #bdbad4;
+    background: #bdbad4;
+}
+::ng-deep .ant-switch{
+    font-size:1.4rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+::ng-deep .ant-switch-handle::before{
+    border-radius: 0.9rem;
+    box-shadow: 0 0.3rem 0.4rem 0 rgb(0 35 11 / 20%);
+}
+::ng-deep .ant-switch-handle{
+    top: 0.2rem; 
+    left: 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+}
+::ng-deep .ant-switch-inner{
+    margin: 0 0.7rem 0 2.5rem;
+    font-size: 1.2rem;
+}
+::ng-deep .ant-modal-header{
+    padding: 1.6rem 2.4rem;
+    border-bottom: 0.1rem solid #f0f0f0;
+    border-radius: 0.2rem 0.2rem 0 0;
+}
+::ng-deep .ant-btn{
+    height: 3.2rem;
+    padding: 0.4rem 1.5rem;
+    font-size: 1.4rem;
+    border-radius: 0.2rem;
+}

@@ -9,10 +9,13 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { DataSendingModalComponent } from './setting/data-sending-modal/data-sending-modal.component';
 
 @NgModule({
   declarations: [
-    NavComponent
+    NavComponent,
+    DataSendingModalComponent
   ],
   imports: [
     CoreModule,
@@ -23,7 +26,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzAvatarModule,
     NzDropDownModule,
     NzIconModule,
-    NzDividerModule
+    NzDividerModule,
+    NzSwitchModule
   ],
   exports: [
     CoreModule,

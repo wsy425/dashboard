@@ -30,7 +30,7 @@ export class SignalRService {
   currentSensorData: Object;
   currentListOfData: ParamsList[] = [];
   currentPanelData: Object;
-  currentErrorID: Array<string>;
+  currentErrorID: Object;
   currentListOfError: ParamsList[]
   currentListOfResult: Array<string>
   currentListOfOperation: Array<string>
@@ -67,7 +67,7 @@ export class SignalRService {
 
     for (const source of this.sensor.sourceList) {
       let RawData, dataList: ParamsList[], panelData,
-        errorList: ParamsList[], errorIDList: Array<string>, resultList: Array<string>, operationList: Array<string>
+        errorList: ParamsList[], errorIDList: Object, resultList: Array<string>, operationList: Array<string>
       this.connection.on('RawDataCome' + source, (raw_data: string) => {
         // console.log(this.currentPanelData)
         RawData = JSON.parse(raw_data);

@@ -52,3 +52,7 @@
     font-size: 1.7rem;
     font-weight: 500;
 }
+
+::ng-deep .ant-message .anticon{
+    top: -3px
+}

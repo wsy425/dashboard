@@ -1,0 +1,9 @@
+<ng-container *ngFor="let source of this.sources">
+    <div>
+        <span>{{source}}数据</span>
+        <nz-switch class="button" [(ngModel)]="this.switchValue[source]" [nzControl]="true"
+            (click)="clickSwitch(source)" [nzLoading]="this.loading[source]" nzCheckedChildren="开"
+            nzUnCheckedChildren="关">
+        </nz-switch>
+    </div>
+</ng-container>

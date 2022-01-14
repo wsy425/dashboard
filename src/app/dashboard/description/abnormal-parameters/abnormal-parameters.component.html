@@ -2,7 +2,7 @@
     <ng-container *ngFor="let data of this.signalR.currentListOfError; let i = index">
         <li>
             <span [style.background-color]="data.statusBar" class="statusBar"></span>
-            <span>{{data.time}} {{data.description}}<br>{{data.chineseName}}传感器{{data.paraName}}数值为{{
+            <span>{{data.time}} {{this.sensor.source}}{{data.description}} {{data.chineseName}}{{data.paraName}}数值为{{
                 data.numericalValue
                 |number:'1.0-3'}}{{data.unit}}</span>
         </li>
