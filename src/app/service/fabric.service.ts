@@ -43,24 +43,23 @@ export class FabricService {
 
   // canvas初始化
   initialize(source: string, width: number, height: number) {
+    console.log(source)
     this.editMode = false
     // 创建Canvas
-    this.canvas = new fabric.Canvas('canvas', {
+    this.canvas = new fabric.Canvas(source, {
       selection: false, width, height
     });
+    // console.log(this.canvas)
     // 初始化Canvas内容
-    this.readCanvas()
+    this.readCanvas(source)
 
     // TODO:Canvas内容大小自适应
 
     // 添加双击传感器事件
     this.canvas.on('mouse:dblclick', (options) => {
       if (options.target?.type === 'circle') {
-        this.target?.set('fill', 'rgba(145, 255, 255, 0.5)')
-        this.target?.set('stroke', 'rgba(145, 255, 255, 0.5)')
-        this.target = options.target
-        this.target.set('fill', '#84E8F4')
-        this.target.set('stroke', '#84E8F4')
+        this.saveCanvas()
+        this.selectSensor(options.target)
         this.editMode = false
         this.function = false
       }
@@ -115,10 +114,10 @@ export class FabricService {
       top: 300,
       radius: 10,
       strokeWidth: 2,
-      fill: 'rgba(145, 255, 255, 0.5)',
-      stroke: 'rgba(145, 255, 255, 0.5)',
-      scaleX: 0.7,
-      scaleY: 0.7
+      fill: '#84E8F4',
+      stroke: '#68B7C1',
+      scaleX: 0.8,
+      scaleY: 0.8
     });
 
     sensor.toObject = ((toObject) => {
@@ -130,6 +129,7 @@ export class FabricService {
     })(sensor.toObject);
     this.canvas.selection = true;
     this.canvas.add(sensor);
+    this.selectSensor(sensor)
     return sensor;
   }
 
@@ -147,22 +147,22 @@ export class FabricService {
 
   // 查询传感器
   inquireSensor(name: string) {
+    let status
     this.canvas.forEachObject(element => {
       if (element.name == name) {
-        console.log(element)
-        element.set('fill', '#FF6466')
-        element.set('stroke', '#FF6466')
-        this.canvas.renderAll()
+        this.selectSensor(element)
+        status = true
       }
     })
+    return status
   }
 
   // 读取canvas
-  readCanvas() {
+  readCanvas(source) {
     // 远端读取
     // TODO:日后要换成后端读取
-    if (localStorage.getItem(this.sensor.source) == null) {
-      this.http.get('assets/' + this.sensor.source + '.json').subscribe(response => {
+    if (localStorage.getItem(source) == null) {
+      this.http.get('assets/' + source + '.json').subscribe(response => {
         this.canvas.loadFromJSON(
           response,
           this.canvas.renderAll.bind(this.canvas),
@@ -171,22 +171,39 @@ export class FabricService {
           },
         );
       })
+      this.canvas.renderAll()
     } else {
       // 浏览器读取
+      console.log('读取' + source)
       this.canvas.loadFromJSON(
-        localStorage.getItem(this.sensor.source),
+        localStorage.getItem(source),
         this.canvas.renderAll.bind(this.canvas),
         (json, object) => {
           object.selectable = !this._editMode;
         }
       )
+      // console.log(this.canvas)
+      this.canvas.renderAll()
     }
+  }
+
+  // 选中传感器逻辑
+  selectSensor(element) {
+    this.target?.set('scaleX', 0.8)
+    this.target?.set('scaleY', 0.8)
+    this.target = element
+    this.target.set('scaleX', 1)
+    this.target.set('scaleY', 1)
+    this.canvas.renderAll()
   }
 
   // 保存canvas信息
   saveCanvas() {
-    this.target?.set('fill', 'rgba(145, 255, 255, 0.5)')
-    this.target?.set('stroke', 'rgba(145, 255, 255, 0.5)')
+    this.canvas.remove(this.sensorName)
+    this.canvas.remove(this.sensorParam)
+    this.target?.set('scaleX', 0.8)
+    this.target?.set('scaleY', 0.8)
+    this.canvas.renderAll()
     localStorage.setItem(this.sensor.source, JSON.stringify(this.canvas));
   }
 

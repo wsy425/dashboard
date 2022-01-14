@@ -66,7 +66,6 @@ export class SignalRService {
     this.connectToSignalRServer();
 
     for (const source of this.sensor.sourceList) {
-      console.log(source)
       let RawData, dataList: ParamsList[], panelData,
         errorList: ParamsList[], errorIDList: Array<string>, resultList: Array<string>, operationList: Array<string>
       this.connection.on('RawDataCome' + source, (raw_data: string) => {

@@ -14,10 +14,13 @@ export class TimeDomainChartComponent implements OnInit {
   time: Array<string> = [];
   data: Array<number> = [];
   connection: HubConnection;
-  ID: string;
+  ID: string = '';
 
   constructor(public fabricService: FabricService, public sensor: SensorInfoService) {
-    this.ID = this.fabricService.target.name
+    if (this.fabricService.target) {
+      this.ID = this.fabricService.target.name
+    }
+
   }
   rem = document.body.clientWidth / 192;
   echartsInstance: any

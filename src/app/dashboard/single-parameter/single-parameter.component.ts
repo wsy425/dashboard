@@ -31,12 +31,15 @@ export class SingleParameterComponent implements OnInit {
 
   // 创建按钮功能
   createSensor() {
-    if (this.sensor.currentSensorDict[this.paraID]) {
+    if (this.sensor.currentSensorDict[this.paraID] && !this.fabricService.inquireSensor(this.paraID)) {
       this.fabricService.addSensor(this.paraID)
       this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
       this.deliver()
       this.alert.MessageAlert('success', "传感器创建成功", 1000)
-    } else {
+    } else if (this.sensor.currentSensorDict[this.paraID]) {
+      this.alert.MessageAlert('warning', "您输入的传感器已存在", 1000)
+    }
+    else {
       this.alert.MessageAlert('error', "您输入的传感器型号不存在", 1000)
     }
   }
@@ -44,10 +47,14 @@ export class SingleParameterComponent implements OnInit {
   // 查询按钮功能
   inquireSensor() {
     if (this.sensor.currentSensorDict[this.paraID]) {
-      this.fabricService.inquireSensor(this.paraID)
-      this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
-      this.deliver()
-      this.alert.MessageAlert('success', "查询到对应传感器", 1000)
+      console.log(this.fabricService.inquireSensor(this.paraID))
+      if (this.fabricService.inquireSensor(this.paraID)) {
+        this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
+        this.deliver()
+        this.alert.MessageAlert('success', "查询到对应传感器", 1000)
+      } else {
+        this.alert.MessageAlert('warning', "未查询到对应传感器", 1000)
+      }
     } else {
       this.alert.MessageAlert('error', "您输入的传感器型号不存在", 1000)
     }
@@ -73,7 +80,7 @@ export class SingleParameterComponent implements OnInit {
 
   // 设置系统主视图按钮功能
   imageSetting() {
-    this.fabricService.setBackground('assets/back.jpg', 100 * this.rem, 75 * this.rem)
+    this.fabricService.setBackground('assets/back.jpeg', 100 * this.rem, 75 * this.rem)
     this.alert.MessageAlert('success', "系统主视图设置成功", 1000)
   }
 

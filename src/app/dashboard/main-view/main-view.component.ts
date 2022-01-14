@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { FabricService } from '../../service/fabric.service';
+import { SensorInfoService } from '../../service/sensor-info.service';
+
 
 @Component({
   selector: 'app-main-view',
@@ -12,10 +14,16 @@ export class MainViewComponent implements OnInit {
   divWidth: ElementRef
   rem = document.body.clientWidth / 192;
 
-  constructor(private fabricService: FabricService) { }
+  constructor(public fabricService: FabricService, public sensor: SensorInfoService) { }
 
   ngOnInit(): void {
-    this.fabricService.initialize(this.source, 100 * this.rem, 83 * this.rem);
+    let timer = setInterval(() => {
+      if (this.sensor.sourceList != undefined) {
+        this.fabricService.initialize(this.source, 100 * this.rem, 83 * this.rem);
+        clearInterval(timer)
+      }
+    }, 1000)
+    // console.log(this.fabricService.canvas)
   }
 
 }
