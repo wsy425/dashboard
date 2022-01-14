@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { hubServerUrl } from 'src/environments/environment';
 import { SensorInfoService } from './sensor-info.service'
 import { AlgorithmService } from './algorithm.service'
+import { fileUrl } from 'src/environments/environment'
+
 
 interface ParamsList {
   paraName: string;
@@ -24,6 +26,7 @@ export class SignalRService {
   connection: HubConnection;
   info: ParamsList;
   Refresh: boolean = true;
+  dataTransmitValue: Object = {}
 
 
   // 用于输出的信息
@@ -46,15 +49,25 @@ export class SignalRService {
   ListOfResult: Array<string> = [];
   ListOfOperation: Array<string> = [];
 
+  // 用于固化的信息
+  ERROR: Array<string> = [];
+
+
 
   constructor(private sensor: SensorInfoService, private http: HttpClient, private algorithm: AlgorithmService) {
     this.Refresh = true
+    if (JSON.parse(localStorage.getItem('ERROR')) != null) {
+      this.ERROR = JSON.parse(localStorage.getItem('ERROR'))
+    }
     this.connection = new HubConnectionBuilder()
       .withUrl(`${hubServerUrl}/RawParam`)
       .withAutomaticReconnect()
       .build();
     let timer = setInterval(() => {
       if (this.sensor.sourceList != undefined) {
+        for (const source of this.sensor.sourceList) {
+          this.dataTransmitValue[source] = false
+        }
         this.connect();
         clearInterval(timer)
       }
@@ -85,7 +98,8 @@ export class SignalRService {
               key, RawData[key], RawData["Time"],
               this.sensor.sensorDict[source], this.sensor.statusList[source]
               , dataList, panelData,
-              errorList, errorIDList, resultList, operationList)
+              errorList, errorIDList, resultList, operationList,
+              this.ERROR)
           }
         }
         this.sensorData[source] = RawData
@@ -97,6 +111,9 @@ export class SignalRService {
         this.algorithm.judgeAdd(this.ListOfResult, resultList, 20)
         this.algorithm.judgeAdd(this.ListOfOperation, operationList, 20)
         this.Refresh = true
+        if (this.ERROR.length > 200) {
+          this.uploadERROR()
+        }
       });
     }
   }
@@ -123,6 +140,15 @@ export class SignalRService {
     this.currentListOfResult = this.ListOfResult
     this.currentListOfOperation = this.ListOfOperation
     this.Refresh = false
+  }
+
+  // 定期固化上传error信息
+  uploadERROR() {
+    let api = fileUrl + '/api/dashboard/json/create';
+    this.http.post(api, this.ERROR).subscribe(data => {
+      this.ERROR = []
+      localStorage.removeItem("ERROR");
+    })
   }
 
 

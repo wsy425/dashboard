@@ -26,7 +26,8 @@ export class AlgorithmService {
   dataProcess(key, value: number, time: string,
     SensorDict: Object, statusList: Array<string>,
     dataList: ParamsList[], panelData: Object,
-    errorList: ParamsList[], errorIDList: Object, resultList: Array<string>, operationList: Array<string>) {
+    errorList: ParamsList[], errorIDList: Object, resultList: Array<string>, operationList: Array<string>,
+    ERROR: Array<string>) {
     let Status = this.judgeStatus(value, key, SensorDict)
     this.info = {
       paraName: SensorDict[key].characterName,
@@ -50,6 +51,8 @@ export class AlgorithmService {
       errorIDList[key] = this.info.statusBar
       resultList = this.judgeAdd(resultList, this.info.result, 20)
       operationList = this.judgeAdd(operationList, this.info.operation, 20)
+      ERROR.push(time + ',' + this.info.description + ',' + this.info.chineseName + "," + this.info.paraName + "," + this.info.numericalValue + ',' + this.info.unit)
+      localStorage.setItem('ERROR', JSON.stringify(ERROR))
     }
 
 

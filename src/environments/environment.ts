@@ -1,8 +1,10 @@
 import { Environment } from '@abp/ng.core';
 // 项目自身地址
 const baseUrl = 'http://localhost:4900';
-// 登录、权限、mySQL文件下载地址
+// 登录、权限
 export const accountUrl = "http://192.168.43.61:44340"
+// 文件传输
+export const fileUrl = "http://192.168.43.61:44352"
 // signalR数据传输地址
 export const hubServerUrl = "http://192.168.43.61:45001"
 // 发送数据地址

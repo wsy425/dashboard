@@ -43,7 +43,6 @@ export class FabricService {
 
   // canvas初始化
   initialize(source: string, width: number, height: number) {
-    console.log(source)
     this.editMode = false
     // 创建Canvas
     this.canvas = new fabric.Canvas(source, {
@@ -67,7 +66,6 @@ export class FabricService {
 
     // 鼠标滑动触发传感器名字
     this.canvas.on('mouse:over', (options) => {
-
       if (options.target?.type === 'circle') {
         const sensorParam = new fabric.Text(options.target.name, {
           left: options.target.left - 20,

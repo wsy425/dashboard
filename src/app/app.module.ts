@@ -31,6 +31,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 
 
 registerLocaleData(zh);
@@ -62,7 +63,8 @@ registerLocaleData(zh);
     NzGridModule,
     NzTabsModule,
     NzAvatarModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzNotificationModule
   ],
   declarations: [AppComponent],
   providers: [APP_ROUTE_PROVIDER, { provide: NZ_I18N, useValue: zh_CN }],

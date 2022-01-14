@@ -1,12 +1,12 @@
 <div class="panel">
     <div class="status">
         <div *ngIf="this.signalR.currentPanelData" style="height: 100%;width: 100%;"
-            [style.background-color]="this.signalR.currentPanelData[_index].statusBar">
+            [style.background-color]="this.signalR.currentPanelData[this._index].statusBar">
         </div>
     </div>
     <div class="value" [style.color]="color">
         <div *ngIf="this.signalR.currentPanelData">
-            {{this.signalR.currentPanelData[_index].numericalValue| number:'1.0-3'}}
+            {{this.signalR.currentPanelData[this._index].numericalValue| number:'1.0-3'}}
         </div>
     </div>
     <div class="description">

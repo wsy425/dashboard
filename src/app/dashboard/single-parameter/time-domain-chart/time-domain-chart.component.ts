@@ -17,10 +17,10 @@ export class TimeDomainChartComponent implements OnInit {
   ID: string = '';
 
   constructor(public fabricService: FabricService, public sensor: SensorInfoService) {
-    if (this.fabricService.target) {
-      this.ID = this.fabricService.target.name
-    }
-
+    this.connection = new HubConnectionBuilder()
+      .withUrl(`${hubServerUrl}/RawParam`)
+      .build();
+    this.connectToSignalRServer();
   }
   rem = document.body.clientWidth / 192;
   echartsInstance: any
@@ -69,10 +69,10 @@ export class TimeDomainChartComponent implements OnInit {
 
 
   async ngOnInit() {
-    this.connection = new HubConnectionBuilder()
-      .withUrl(`${hubServerUrl}/RawParam`)
-      .build();
-    this.connectToSignalRServer();
+    if (this.fabricService.target) {
+      this.ID = this.fabricService.target.name
+    }
+
     this.connection.on('RawDataCome' + this.sensor.source, (raw_data: string) => {
       this.chartOption.title.text = this.ID + "时域图"
       this.chartOption.yAxis.name = this.sensor.currentSensorDict[this.ID].unit
@@ -107,6 +107,10 @@ export class TimeDomainChartComponent implements OnInit {
       time.shift();
       data.shift();
     }
+  }
+
+  ngOnDestroy() {
+    this.connection.off('RawDataCome' + this.sensor.source)
   }
 
   // 如果连接没有成功，每5s重新连接一次。

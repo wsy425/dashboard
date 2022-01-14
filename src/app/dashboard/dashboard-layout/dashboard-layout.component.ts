@@ -23,8 +23,9 @@ export class DashboardLayoutComponent implements OnInit {
   }
 
   switchSource(source) {
-    this.fabricService.saveCanvas()
+    // this.fabricService.saveCanvas()
     this.sensor.setSource(source)
+    this.index = this.sensor.currentStatusList
     this.signalR.setSource(source)
     this.fabricService.function = true
   }

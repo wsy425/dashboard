@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { transmitUrl } from 'src/environments/environment'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SensorInfoService } from '../../service/sensor-info.service';
 import { DataSendingModalComponent } from '../setting/data-sending-modal/data-sending-modal.component'
+import { AlertService } from 'src/app/service/alert.service'
+
+interface resProps {
+  code: number
+  result: string
+}
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +18,8 @@ import { DataSendingModalComponent } from '../setting/data-sending-modal/data-se
 })
 export class NavComponent implements OnInit {
 
-  constructor(private http: HttpClient, private modal: NzModalService) { }
+  constructor(private http: HttpClient, private modal: NzModalService,
+    public sensor: SensorInfoService, private alert: AlertService) { }
   rem = document.body.clientWidth / 192;
   iconRem = 4.5 * this.rem
   time = "XXXX/XX/XX XX:XX:XX"
@@ -38,10 +47,10 @@ export class NavComponent implements OnInit {
 
   // 算法按钮功能
 
-  ngOnInit(): void {
+  ngOnInit() {
     setInterval(() => {
       let d = new Date()
-      this.time = d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + ' ' + d.getHours() + ':' + this.format(d.getMinutes()) + ':' + this.format(d.getSeconds())
+      this.time = d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + this.format(d.getMinutes()) + ':' + this.format(d.getSeconds())
     }, 1000)
   }
 
