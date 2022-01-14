@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SignalRService } from "../../../service/signal-r.service"
 
 @Component({
   selector: 'app-diagnostic-results',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiagnosticResultsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public signalR: SignalRService) { }
   listOfData = ["诊断结果1诊断结果1诊断结果1诊断结果1诊断结果1诊断结果1", "诊断结果2", "诊断结果3"]
 
   ngOnInit(): void {

@@ -55,15 +55,11 @@ export class SingleParameterComponent implements OnInit {
 
   // 删除按钮功能
   deleteSensor() {
-    if (this.sensor.currentSensorDict[this.paraID]) {
-      this.paraID = null
-      this.chineseName = null
-      this.fabricService.deleteSensor()
-      this.deliver()
-      this.alert.MessageAlert('success', "传感器删除成功", 1000)
-    } else {
-      this.alert.MessageAlert('error', "您输入的传感器型号不存在", 1000)
-    }
+    this.paraID = null
+    this.chineseName = null
+    this.fabricService.deleteSensor()
+    this.deliver()
+    this.alert.MessageAlert('success', "传感器删除成功", 1000)
   }
 
   // 保存按钮功能

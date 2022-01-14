@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EChartsOption } from 'echarts';
+// import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'app-statistics',
@@ -11,7 +11,7 @@ export class StatisticsComponent implements OnInit {
   constructor() { }
   rem = document.body.clientWidth / 192;
   echartsInstance: any
-  chartOption: EChartsOption = {
+  chartOption = {
     tooltip: {
       trigger: 'item',
       show: false

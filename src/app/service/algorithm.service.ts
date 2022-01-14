@@ -4,6 +4,7 @@ import { SensorInfoService } from './sensor-info.service'
 interface ParamsList {
   paraName: string;
   chineseName: string;
+  time: string;
   unit: string;
   numericalValue: number;
   statusBar: string;
@@ -22,7 +23,8 @@ export class AlgorithmService {
   }
 
   // 数据总处理
-  dataProcess(key, value: number, SensorDict: Object, statusList: Array<string>,
+  dataProcess(key, value: number, time: string,
+    SensorDict: Object, statusList: Array<string>,
     dataList: ParamsList[], panelData: Object,
     errorList: ParamsList[], errorIDList: Array<string>, resultList: Array<string>, operationList: Array<string>) {
     let Status = this.judgeStatus(value, key, SensorDict)
@@ -30,6 +32,7 @@ export class AlgorithmService {
       paraName: SensorDict[key].characterName,
       chineseName: SensorDict[key].chineseName,
       unit: SensorDict[key].unit,
+      time: time,
       numericalValue: value,
       statusBar: Status[0],
       description: Status[1],
@@ -45,8 +48,8 @@ export class AlgorithmService {
     if (this.info.statusBar != '#84E8F4') {
       errorList.push(this.info)
       errorIDList.push(this.info.paraName)
-      resultList = this.judgeAdd(resultList, this.info.result)
-      operationList = this.judgeAdd(operationList, this.info.operation)
+      resultList = this.judgeAdd(resultList, this.info.result, 20)
+      operationList = this.judgeAdd(operationList, this.info.operation, 20)
     }
 
 
@@ -76,22 +79,26 @@ export class AlgorithmService {
     return ['#84E8F4', '', '', '']
   }
 
-  // 诊断结果、决策去重
-  judgeAdd(showList: any, addList: any) {
+  // 诊断结果、决策去重，累计显示
+  judgeAdd(showList: any, addList: any, num: number) {
     for (let i = 0; i < addList.length; i++) {
       if (!showList.includes(addList[i])) {
         showList.push(addList[i])
+      }
+      if (showList.length > num) {
+        showList.shift()
       }
     }
     return showList
   }
 
   // 累计信息显示
-  cumulativeDisplay(showList, info, num) {
-    showList.push(info)
-    if (showList.length > num) {
-      showList.shift()
-    }
-  }
+  // cumulativeDisplay(showList, info, num) {
+  //   showList = this.judgeAdd(showList, info)
+  //   if (showList.length > num) {
+  //     showList = showList.slice(showList.length - num, showList.length)
+  //     console.log(showList.length)
+  //   }
+  // }
 
 }

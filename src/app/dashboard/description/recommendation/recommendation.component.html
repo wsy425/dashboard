@@ -1,6 +1,8 @@
-<ng-container *ngFor="let data of listOfData; let i = index">
-    <li>
-        <span class="index">{{i+1}}.</span>
-        <span>{{data}}</span>
-    </li>
-</ng-container>
+<div>
+    <ng-container *ngFor="let data of this.signalR.currentListOfOperation; let i = index">
+        <li>
+            <span class="index">{{i+1}}.</span>
+            <span>{{data}}</span>
+        </li>
+    </ng-container>
+</div>

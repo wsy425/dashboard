@@ -31,6 +31,14 @@ export class FabricService {
 
   constructor(public sensor: SensorInfoService, private http: HttpClient) {
     this.editMode = false
+    // 获取之前添加的name信息
+    fabric.Circle.prototype.toObject = ((toObject) => {
+      return function () {
+        return fabric.util.object.extend(toObject.call(this), {
+          name: this.name
+        });
+      };
+    })(fabric.Circle.prototype.toObject);
   }
 
   // canvas初始化
@@ -47,9 +55,15 @@ export class FabricService {
 
     // 添加双击传感器事件
     this.canvas.on('mouse:dblclick', (options) => {
-      this.target = options.target
-      this.editMode = false
-      this.function = false
+      if (options.target?.type === 'circle') {
+        this.target?.set('fill', 'rgba(145, 255, 255, 0.5)')
+        this.target?.set('stroke', 'rgba(145, 255, 255, 0.5)')
+        this.target = options.target
+        this.target.set('fill', '#84E8F4')
+        this.target.set('stroke', '#84E8F4')
+        this.editMode = false
+        this.function = false
+      }
     });
 
     // 鼠标滑动触发传感器名字

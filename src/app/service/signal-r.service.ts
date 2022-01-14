@@ -8,6 +8,7 @@ import { AlgorithmService } from './algorithm.service'
 interface ParamsList {
   paraName: string;
   chineseName: string;
+  time: string;
   unit: string;
   numericalValue: number;
   statusBar: string;
@@ -30,6 +31,9 @@ export class SignalRService {
   currentListOfData: ParamsList[] = [];
   currentPanelData: Object;
   currentErrorID: Array<string>;
+  currentListOfError: ParamsList[]
+  currentListOfResult: Array<string>
+  currentListOfOperation: Array<string>
 
   // 用于存储的信息
   sensorData: Object = {};
@@ -79,8 +83,9 @@ export class SignalRService {
             continue
           } else {
             this.algorithm.dataProcess(
-              key, RawData[key], this.sensor.sensorDict[source], this.sensor.statusList[source],
-              dataList, panelData,
+              key, RawData[key], RawData["Time"],
+              this.sensor.sensorDict[source], this.sensor.statusList[source]
+              , dataList, panelData,
               errorList, errorIDList, resultList, operationList)
           }
         }
@@ -89,9 +94,9 @@ export class SignalRService {
         this.ListOfData[source] = dataList
         this.PanelData[source] = panelData
         this.errorID[source] = errorIDList
-        this.algorithm.cumulativeDisplay(this.ListOfError, errorList, 20)
-        this.algorithm.cumulativeDisplay(this.ListOfResult, resultList, 20)
-        this.algorithm.cumulativeDisplay(this.ListOfOperation, operationList, 20)
+        this.algorithm.judgeAdd(this.ListOfError, errorList, 20)
+        this.algorithm.judgeAdd(this.ListOfResult, resultList, 20)
+        this.algorithm.judgeAdd(this.ListOfOperation, operationList, 20)
         this.Refresh = true
       });
     }
@@ -115,6 +120,9 @@ export class SignalRService {
     this.currentListOfData = this.ListOfData[source]
     this.currentPanelData = this.PanelData[source]
     this.currentErrorID = this.errorID[source]
+    this.currentListOfError = this.ListOfError
+    this.currentListOfResult = this.ListOfResult
+    this.currentListOfOperation = this.ListOfOperation
     this.Refresh = false
   }
 

@@ -26,6 +26,7 @@ export class DashboardLayoutComponent implements OnInit {
     this.fabricService.saveCanvas()
     this.sensor.setSource(source)
     this.signalR.setSource(source)
+    this.fabricService.function = true
   }
 
   ngDoCheck() {

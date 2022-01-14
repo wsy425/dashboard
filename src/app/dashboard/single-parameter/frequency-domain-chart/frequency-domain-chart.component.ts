@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./frequency-domain-chart.component.scss']
 })
 export class FrequencyDomainChartComponent implements OnInit {
-  @Input() sensorID: string
 
   constructor() { }
 

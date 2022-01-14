@@ -19,7 +19,7 @@
                         "high"
                     ],
                     "limitValue": [
-                        0.8
+                        0.4
                     ],
                     "statusColor": [
                         "#FFD134"
@@ -48,11 +48,12 @@
                         "二号传感器数据低1"
                     ],
                     "limitType": [
+                        "low",
                         "low"
                     ],
                     "limitValue": [
-                        0.3,
-                        0.5
+                        0.6,
+                        0.7
                     ],
                     "statusColor": [
                         "#FF6466",
@@ -237,6 +238,7 @@
                         "二号传感器数据低1"
                     ],
                     "limitType": [
+                        "low",
                         "low"
                     ],
                     "limitValue": [
@@ -424,6 +426,7 @@
                         "二号传感器数据低1"
                     ],
                     "limitType": [
+                        "low",
                         "low"
                     ],
                     "limitValue": [
