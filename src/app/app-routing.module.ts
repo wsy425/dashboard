@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PermissionGuard } from '@abp/ng.core';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [PermissionGuard],
+    // TODO:确定权限密钥
+    // data: {
+    //   requiredPolicy: 'Monitor.Third.Dashboard_Use', // policy key for your component
+    // },
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {

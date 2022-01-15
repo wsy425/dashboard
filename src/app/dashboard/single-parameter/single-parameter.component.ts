@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FabricService } from '../../service/fabric.service';
 import { SensorInfoService } from '../../service/sensor-info.service'
 import { AlertService } from '../../service/alert.service'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { fileUrl } from 'src/environments/environment'
 
 @Component({
   selector: 'app-single-parameter',
@@ -14,8 +16,9 @@ export class SingleParameterComponent implements OnInit {
   chineseName: string = '';
   paraID: string = '';
   sensorID: string = '';
+  hidden: string = 'hidden'
 
-  constructor(public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService) { }
+  constructor(private http: HttpClient, public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService) { }
 
   ngAfterContentChecked() {
     if (this.fabricService.target && this.paraID !== this.fabricService.target.name && this.fabricService.editMode == false) {
@@ -82,6 +85,18 @@ export class SingleParameterComponent implements OnInit {
   imageSetting() {
     this.fabricService.setBackground('assets/back.jpeg', 100 * this.rem, 75 * this.rem)
     this.alert.MessageAlert('success', "系统主视图设置成功", 1000)
+  }
+
+  // 保存页面配置至服务器按钮
+  uploadSensorLocation() {
+    this.fabricService.saveCanvas()
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+    let api = fileUrl + '/api/dashboard/blob/file'
+    console.log(JSON.stringify(this.fabricService.canvas))
+    this.http.post(api, JSON.stringify(this.fabricService.canvas), httpOptions).subscribe((res) => {
+      console.log(res)
+      this.alert.MessageAlert('success', "页面配置上传成功", 1000)
+    })
   }
 
 

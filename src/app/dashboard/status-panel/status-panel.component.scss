@@ -23,8 +23,14 @@
     color: #9CA0AB;
     position: absolute;
     top:7.5rem;
-    left:2.5rem;
+    left:2.3rem;
+    width: 65%;
 }
-.panel .description .unit {
+.panel .description .info {
     margin-bottom: 0.5rem;
+    width: 100%;
+}
+.panel .description .info .unit{
+    float: right;
+    left: -2.5rem;
 }

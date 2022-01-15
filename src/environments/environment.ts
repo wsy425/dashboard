@@ -14,8 +14,8 @@ export const environment = {
   production: false,
   application: {
     baseUrl,
-    name: 'Dashboard',
-    logoUrl: '',
+    name: 'TPL智能故障诊断系统',
+    logoUrl: 'assets/TPLlogo.png',
   },
   oAuthConfig: {
     issuer: accountUrl,

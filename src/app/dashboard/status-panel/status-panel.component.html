@@ -6,11 +6,11 @@
     </div>
     <div class="value" [style.color]="color">
         <div *ngIf="this.signalR.currentPanelData">
-            {{this.signalR.currentPanelData[this._index].numericalValue| number:'1.0-3'}}
+            {{this.signalR.currentPanelData[this._index].numericalValue| number:'1.0-2'}}
         </div>
     </div>
     <div class="description">
-        <div class="unit">{{this.unit}}</div>
+        <div class="info"><span class="ID">{{this.ID}}</span><span class="unit">{{this.unit}}</span></div>
         <div class="chineseName">{{this.chineseName}}</div>
     </div>
 </div>

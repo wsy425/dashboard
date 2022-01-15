@@ -15,7 +15,7 @@ import { DataSendingModalComponent } from './setting/data-sending-modal/data-sen
 @NgModule({
   declarations: [
     NavComponent,
-    DataSendingModalComponent
+    DataSendingModalComponent,
   ],
   imports: [
     CoreModule,

@@ -10,7 +10,9 @@ import { myDefault } from './shared/echarts-theme';
   `,
 })
 export class AppComponent implements OnInit {
+
   ngOnInit(): void {
+
     echarts.registerTheme("Default", myDefault);
   }
 }

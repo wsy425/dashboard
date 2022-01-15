@@ -15,13 +15,16 @@ export class StatusPanelComponent implements OnInit {
     this._index = index
     this.chineseName = this.sensor.currentSensorDict[index]?.chineseName ?? ''
     this.unit = this.sensor.currentSensorDict[index]?.unit ?? ''
+    this.ID = index
   }
 
   constructor(public sensor: SensorInfoService, public signalR: SignalRService) { }
   statusBar = "#84E8F4"
   color = "black"
   unit = "单位"
-  chineseName = ""
+  chineseName = "中文名"
+  ID = "型号"
+
 
   ngOnInit(): void {
   }
