@@ -16,9 +16,9 @@ const routes: Routes = [
     path: 'dashboard',
     canActivate: [PermissionGuard],
     // TODO:确定权限密钥
-    // data: {
-    //   requiredPolicy: 'Monitor.Third.Dashboard_Use', // policy key for your component
-    // },
+    data: {
+      requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
+    },
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {

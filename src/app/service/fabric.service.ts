@@ -172,7 +172,6 @@ export class FabricService {
       this.canvas.renderAll()
     } else {
       // 浏览器读取
-      console.log('读取' + source)
       this.canvas.loadFromJSON(
         localStorage.getItem(source),
         this.canvas.renderAll.bind(this.canvas),

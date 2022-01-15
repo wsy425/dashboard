@@ -85,7 +85,6 @@ export class TimeDomainChartComponent implements OnInit {
         this.chartOption.yAxis.name = this.sensor.currentSensorDict[this.ID].unit
       }
       this.addData(JSON.parse(raw_data), this.ID, this.time, this.data)
-      console.log(this.fabricService.target.name)
       // this.chartOption.title.text = this.ID + "时域图"
       this.chartOption.series[0].data = this.data
       this.chartOption.xAxis.data = this.time

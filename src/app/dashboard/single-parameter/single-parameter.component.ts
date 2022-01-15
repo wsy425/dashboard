@@ -6,6 +6,11 @@ import { AlertService } from '../../service/alert.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { fileUrl } from 'src/environments/environment'
 
+interface resProps {
+  code: number
+  info: string
+}
+
 @Component({
   selector: 'app-single-parameter',
   templateUrl: './single-parameter.component.html',
@@ -50,7 +55,7 @@ export class SingleParameterComponent implements OnInit {
   // 查询按钮功能
   inquireSensor() {
     if (this.sensor.currentSensorDict[this.paraID]) {
-      console.log(this.fabricService.inquireSensor(this.paraID))
+      // console.log(this.fabricService.inquireSensor(this.paraID))
       if (this.fabricService.inquireSensor(this.paraID)) {
         this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
         this.deliver()
@@ -91,11 +96,18 @@ export class SingleParameterComponent implements OnInit {
   uploadSensorLocation() {
     this.fabricService.saveCanvas()
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
-    let api = fileUrl + '/api/dashboard/blob/file'
-    console.log(JSON.stringify(this.fabricService.canvas))
-    this.http.post(api, JSON.stringify(this.fabricService.canvas), httpOptions).subscribe((res) => {
-      console.log(res)
-      this.alert.MessageAlert('success', "页面配置上传成功", 1000)
+    let api = fileUrl + '/api/dashboard/json/config/update'
+    let data = {
+      configName: this.sensor.source,
+      content: JSON.stringify(this.fabricService.canvas)
+    }
+    console.log(data)
+    this.http.put(api, data, httpOptions).subscribe((res: resProps) => {
+      if (res.code == 200) {
+        this.alert.MessageAlert('success', "页面配置上传成功", 1000)
+      } else {
+        this.alert.MessageAlert('error', res.info, 1000)
+      }
     })
   }
 

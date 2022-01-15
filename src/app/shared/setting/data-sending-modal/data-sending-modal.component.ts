@@ -36,7 +36,6 @@ export class DataSendingModalComponent implements OnInit {
         api = transmitUrl + '/start'
       }
       this.http.post(api, data, httpOptions).subscribe((res: resProps) => {
-        console.log(res)
         if (res.code == 200) {
           this.signalR.dataTransmitValue[source] = !this.signalR.dataTransmitValue[source]
           this.alert.MessageAlert('success', res.result, 1000)

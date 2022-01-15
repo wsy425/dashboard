@@ -44,7 +44,6 @@ export class DashboardLayoutComponent implements OnInit {
         this.sensor.setSource(this.sources[0])
         this.signalR.setSource(this.sources[0])
         this.index = this.sensor.currentStatusList
-        console.log(this.signalR.Refresh)
         clearInterval(timer)
       }
     }, 1000)

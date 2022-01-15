@@ -38,7 +38,6 @@ export class NavComponent implements OnInit {
   }
   // 账号注销功能
   logout() {
-    console.log(11111)
     this.authService.logout().subscribe(data => {
       this.alert.MessageAlert('success', "您已成功注销账号", 1000)
       this.router.navigateByUrl('/login');

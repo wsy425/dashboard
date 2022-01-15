@@ -45,7 +45,6 @@ export class ResetModalComponent implements OnInit {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
     let api = accountUrl + '/api/app/reset-password'
     this.http.post(api, resetForm, httpOptions).subscribe((response: responseProps) => {
-      console.log(response)
       if (response.statusCode === 200) {
         this.alert.MessageAlert('success', response.message, 3000)
         this.nzModalRef.destroy(true);
