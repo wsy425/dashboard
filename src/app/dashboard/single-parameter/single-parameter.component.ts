@@ -20,10 +20,10 @@ export class SingleParameterComponent implements OnInit {
   rem = document.body.clientWidth / 192;
   chineseName: string = '';
   paraID: string = '';
-  sensorID: string = '';
-  hidden: string = 'hidden'
 
-  constructor(private http: HttpClient, public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService) { }
+  constructor(private http: HttpClient, public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService) {
+    this.paraID = ''
+  }
 
   ngAfterContentChecked() {
     if (this.fabricService.target && this.paraID !== this.fabricService.target.name && this.fabricService.editMode == false) {
@@ -42,7 +42,6 @@ export class SingleParameterComponent implements OnInit {
     if (this.sensor.currentSensorDict[this.paraID] && !this.fabricService.inquireSensor(this.paraID)) {
       this.fabricService.addSensor(this.paraID)
       this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
-      this.deliver()
       this.alert.MessageAlert('success', "传感器创建成功", 1000)
     } else if (this.sensor.currentSensorDict[this.paraID]) {
       this.alert.MessageAlert('warning', "您输入的传感器已存在", 1000)
@@ -58,7 +57,6 @@ export class SingleParameterComponent implements OnInit {
       // console.log(this.fabricService.inquireSensor(this.paraID))
       if (this.fabricService.inquireSensor(this.paraID)) {
         this.chineseName = this.sensor.currentSensorDict[this.paraID].chineseName
-        this.deliver()
         this.alert.MessageAlert('success', "查询到对应传感器", 1000)
       } else {
         this.alert.MessageAlert('warning', "未查询到对应传感器", 1000)
@@ -73,7 +71,6 @@ export class SingleParameterComponent implements OnInit {
     this.paraID = null
     this.chineseName = null
     this.fabricService.deleteSensor()
-    this.deliver()
     this.alert.MessageAlert('success', "传感器删除成功", 1000)
   }
 
@@ -82,7 +79,6 @@ export class SingleParameterComponent implements OnInit {
     this.fabricService.modifySensor(this.paraID)
     this.fabricService.editMode = !this.fabricService.editMode
     this.fabricService.saveCanvas()
-    this.deliver()
     this.alert.MessageAlert('success', "传感器位置信息保存成功", 1000)
   }
 
@@ -115,8 +111,5 @@ export class SingleParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deliver() {
-    this.sensorID = this.paraID
-  }
 
 }

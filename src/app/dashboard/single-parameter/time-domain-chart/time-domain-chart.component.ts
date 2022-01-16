@@ -75,7 +75,7 @@ export class TimeDomainChartComponent implements OnInit {
 
     this.connection.on('RawDataCome' + this.sensor.source, (raw_data: string) => {
       this.chartOption.title.text = this.ID + "时域图"
-      this.chartOption.yAxis.name = this.sensor.currentSensorDict[this.ID].unit
+      this.chartOption.yAxis.name = this.sensor.currentSensorDict[this.ID]?.unit
       if (this.ID != this.fabricService.target.name) {
         this.time = []
         this.data = []
@@ -85,7 +85,6 @@ export class TimeDomainChartComponent implements OnInit {
         this.chartOption.yAxis.name = this.sensor.currentSensorDict[this.ID].unit
       }
       this.addData(JSON.parse(raw_data), this.ID, this.time, this.data)
-      // this.chartOption.title.text = this.ID + "时域图"
       this.chartOption.series[0].data = this.data
       this.chartOption.xAxis.data = this.time
       if (this.echartsInstance) {

@@ -168,6 +168,7 @@ export class FabricService {
             object.selectable = !this._editMode;
           },
         );
+        this.canvas
       })
       this.canvas.renderAll()
     } else {

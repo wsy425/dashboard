@@ -15,7 +15,6 @@ const routes: Routes = [
   {
     path: 'dashboard',
     canActivate: [PermissionGuard],
-    // TODO:确定权限密钥
     data: {
       requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
     },

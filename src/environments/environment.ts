@@ -2,13 +2,13 @@ import { Environment } from '@abp/ng.core';
 // 项目自身地址
 const baseUrl = 'http://localhost:4900';
 // 登录、权限
-export const accountUrl = "http://192.168.43.61:44340"
+export const accountUrl = "http://120.26.2.197:44340"
 // 文件传输
-export const fileUrl = "http://192.168.43.61:44352"
+export const fileUrl = "http://120.26.2.197:44352"
 // signalR数据传输地址
-export const hubServerUrl = "http://192.168.43.61:45001"
+export const hubServerUrl = "http://120.26.2.197:45001"
 // 发送数据地址
-export const transmitUrl = "http://192.168.43.61:48888"
+export const transmitUrl = "http://120.26.2.197:48888"
 
 export const environment = {
   production: false,

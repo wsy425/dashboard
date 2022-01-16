@@ -51,6 +51,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.login(user)
       .toPromise()
       .then(data => {
+        // console.log(data)
         this.alert.MessageAlert('success', "恭喜您登录成功！", 1000)
         setTimeout(() => {
           this.router.navigateByUrl('/dashboard');

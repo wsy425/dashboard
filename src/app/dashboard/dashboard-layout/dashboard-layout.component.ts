@@ -28,6 +28,7 @@ export class DashboardLayoutComponent implements OnInit {
     this.index = this.sensor.currentStatusList
     this.signalR.setSource(source)
     this.fabricService.function = true
+    this.fabricService.target = undefined
   }
 
   ngDoCheck() {
