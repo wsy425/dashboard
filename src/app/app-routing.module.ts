@@ -14,10 +14,10 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [PermissionGuard],
-    data: {
-      requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
-    },
+    // canActivate: [PermissionGuard],
+    // data: {
+    //   requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
+    // },
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {

@@ -3,6 +3,7 @@ import { fabric } from 'fabric';
 import { Object } from 'fabric';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SensorInfoService } from './sensor-info.service'
+import { AlertService } from './alert.service'
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class FabricService {
     this.canvas?.discardActiveObject();
   }
 
-  constructor(public sensor: SensorInfoService, private http: HttpClient) {
+  constructor(public sensor: SensorInfoService, private http: HttpClient, private alert: AlertService) {
     this.editMode = false
     // 获取之前添加的name信息
     fabric.Circle.prototype.toObject = ((toObject) => {
@@ -51,8 +52,6 @@ export class FabricService {
     // console.log(this.canvas)
     // 初始化Canvas内容
     this.readCanvas(source)
-
-    // TODO:Canvas内容大小自适应
 
     // 添加双击传感器事件
     this.canvas.on('mouse:dblclick', (options) => {
@@ -161,6 +160,10 @@ export class FabricService {
     // TODO:日后要换成后端读取
     if (localStorage.getItem(source) == null) {
       this.http.get('assets/' + source + '.json').subscribe(response => {
+        console.log(response)
+        response = this.adaptiveJson(response)
+        console.log(response)
+        console.log(document.body.clientWidth)
         this.canvas.loadFromJSON(
           response,
           this.canvas.renderAll.bind(this.canvas),
@@ -168,7 +171,6 @@ export class FabricService {
             object.selectable = !this._editMode;
           },
         );
-        this.canvas
       })
       this.canvas.renderAll()
     } else {
@@ -197,13 +199,37 @@ export class FabricService {
 
   // 保存canvas信息
   saveCanvas() {
-    this.canvas.remove(this.sensorName)
-    this.canvas.remove(this.sensorParam)
-    this.target?.set('scaleX', 0.8)
-    this.target?.set('scaleY', 0.8)
-    this.canvas.renderAll()
-    localStorage.setItem(this.sensor.source, JSON.stringify(this.canvas));
+    if (document.body.clientWidth > 1920 || document.body.clientWidth < 1900) {
+      this.alert.MessageAlert('warning', '您现在的显示设备不是标准尺寸，请再标准尺寸下保存', 3000)
+    } else {
+      this.canvas.remove(this.sensorName)
+      this.canvas.remove(this.sensorParam)
+      this.target?.set('scaleX', 0.8)
+      this.target?.set('scaleY', 0.8)
+      this.canvas.renderAll()
+      localStorage.setItem(this.sensor.source, JSON.stringify(this.canvas));
+    }
+
   }
 
+  // 读取Canvas内容后大小自适应
+  adaptiveJson(json) {
+    console.log(document.body.clientWidth)
+    if (document.body.clientWidth > 1920 || document.body.clientWidth < 1900) {
+      const scaleFactor = document.body.clientWidth / 1920
+      json['backgroundImage']['scaleX'] *= scaleFactor
+      json['backgroundImage']['scaleY'] *= scaleFactor
+      json['backgroundImage']['left'] *= scaleFactor
+      json['backgroundImage']['top'] *= scaleFactor
+      for (const obj of json['objects']) {
+        obj['left'] *= scaleFactor
+        obj['top'] *= scaleFactor
+        obj['scaleX'] *= scaleFactor
+        obj['scaleY'] *= scaleFactor
+      }
+      return json
+    }
+    return json
+  }
 
 }

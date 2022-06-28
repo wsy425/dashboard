@@ -1,116 +1,124 @@
 .background {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C4D3F9;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #C4D3F9;
+  width: 100%;
+  height: 100%;
 }
+
 .container {
-    position: relative;
-    background-color: #F2F7FF;
-    width: 115rem;
-    height: 60rem;
-    box-shadow: 0.5rem 1rem 1rem 0.2rem rgba(0, 0, 0, 0.3);
-    perspective: 280rem;
+  position: relative;
+  background-color: #F2F7FF;
+  width: 115rem;
+  height: 60rem;
+  box-shadow: 0.5rem 1rem 1rem 0.2rem rgba(0, 0, 0, 0.3);
+  perspective: 280rem;
 }
-.container .cover{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80rem;
-    height: 100%;
-    background-color: aquamarine;
-    z-index: 98;
-    filter: drop-shadow(0.5rem 0px 1rem rgba(0, 0, 0, 0.25));
-    transition: all 0.8s ease;
-    transform-origin: 71.875%;
-    transform-style: preserve-3d;
-  }
-  .container #flip:checked ~ .cover{
-    transform: rotateY(180deg);
-  }
 
-  .container .cover .front {
-    width: 100%;
-    height: 100%;
-    background-image: url(~src/assets/login.jpg);
-    background-size: 100% 100%;
-    background-repeat:no-repeat;
-  }
+.container .cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80rem;
+  height: 100%;
+  z-index: 98;
+  filter: drop-shadow(0.5rem 0px 1rem rgba(0, 0, 0, 0.25));
+  transition: all 0.8s ease;
+  transform-origin: 71.875%;
+  transform-style: preserve-3d;
+}
+
+.container #flip:checked~.cover {
+  transform: rotateY(180deg);
+}
+
+.container .cover .front {
+  width: 100%;
+  height: 100%;
+  background-image: url(~src/assets/login.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 
 
-  .container #flip:checked ~ .cover .front {
-    display:none
-  }
+.container #flip:checked~.cover .front {
+  display: none
+}
 
-  .container .cover .back{
-    width: 100%;
-    height: 100%;
-    background-image: url(~src/assets/login.jpg);
-    background-size: 100% 100%;
-    background-repeat:no-repeat;
-    transform: rotateY(180deg);
-    display:none
-  }
+.container .cover .back {
+  width: 100%;
+  height: 100%;
+  background-image: url(~src/assets/login.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  transform: rotateY(180deg);
+  display: none
+}
 
-  .container #flip:checked ~ .cover .back {
-    display:flex
-  }
+.container #flip:checked~.cover .back {
+  display: flex
+}
 
-  .container .cover .text {
-    position: absolute;
-    color: white;
-    font-size: 4.8rem;
-    // font-weight: 300;
-    height: 100%;
-    width: 100%;
-    z-index: 111;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 9rem;
-    backface-visibility: hidden;
-  }
-  .container .cover .text .extra {
-    font-size: 2.4rem;
-  }
+.container .cover .text {
+  position: absolute;
+  color: white;
+  font-size: 4.8rem;
+  // font-weight: 300;
+  height: 100%;
+  width: 100%;
+  z-index: 111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 9rem;
+  backface-visibility: hidden;
+}
 
-.forms .signupform{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 35rem;
-    height: 100%;
-    // background-color: blueviolet;
-  }
+.container .cover .text .extra {
+  font-size: 2.4rem;
+}
 
-.forms .loginform{
-    position: absolute;
-    top: 0;
-    left: 80rem;
-    width: 35rem;
-    height: 100%;
-    // background-color: blueviolet;
+.forms .signupform {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35rem;
+  height: 100%;
+  // background-color: blueviolet;
+}
+
+.forms .loginform {
+  position: absolute;
+  top: 0;
+  left: 80rem;
+  width: 35rem;
+  height: 100%;
+  // background-color: blueviolet;
 
 }
-.forms .signupform, .forms .loginform {
+
+.forms .signupform,
+.forms .loginform {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.forms .text{
+
+.forms .text {
   font-size: 1.4rem;
   color: #CBD1DE;
-  font-weight:600;
+  font-weight: 600;
 }
+
 .forms label:hover {
   text-decoration: underline;
   color: #F9896B;
   cursor: pointer;
 
 }
-#flip{
-  display:none
+
+#flip {
+  display: none
 }
