@@ -6,7 +6,7 @@ import { myDefault } from './shared/echarts-theme';
   selector: 'app-root',
   template: `
     <abp-loader-bar></abp-loader-bar>
-    <abp-dynamic-layout></abp-dynamic-layout>
+    <router-outlet></router-outlet>
   `,
 })
 export class AppComponent implements OnInit {

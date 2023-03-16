@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PermissionGuard } from '@abp/ng.core';
+import { eLayoutType } from '@abp/ng.core';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+  // },
   {
     path: '',
-    pathMatch: 'full',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-  },
-  {
-    path: 'login',
+    data: {
+      routes: {
+        layout: eLayoutType.application
+      }
+    },
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
   },
   {
     path: 'dashboard',
-    // canActivate: [PermissionGuard],
-    // data: {
-    //   requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
-    // },
+    canActivate: [PermissionGuard],
+    data: {
+      requiredPolicy: 'Dashboard.Base.Use', // policy key for your component
+    },
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
   },
   {
@@ -41,7 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

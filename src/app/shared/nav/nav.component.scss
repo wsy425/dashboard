@@ -32,6 +32,10 @@
     color: #51459E
 }
 
+.nav .router a .active {
+    font-size: 2.6rem;
+}
+
 ::ng-deep .ant-divider-vertical {
     top: -0.5rem;
     height: 3.2rem;
