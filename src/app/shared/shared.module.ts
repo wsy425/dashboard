@@ -10,12 +10,16 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { DataSendingModalComponent } from './setting/data-sending-modal/data-sending-modal.component';
+import { PersonalInfoModalComponent } from './user/personal-info-modal/personal-info-modal.component';
 
 @NgModule({
   declarations: [
     NavComponent,
     DataSendingModalComponent,
+    PersonalInfoModalComponent,
   ],
   imports: [
     CoreModule,
@@ -27,7 +31,9 @@ import { DataSendingModalComponent } from './setting/data-sending-modal/data-sen
     NzDropDownModule,
     NzIconModule,
     NzDividerModule,
-    NzSwitchModule
+    NzSwitchModule,
+    NzTypographyModule,
+    NzUploadModule
   ],
   exports: [
     CoreModule,

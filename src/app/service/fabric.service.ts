@@ -160,9 +160,9 @@ export class FabricService {
     // TODO:日后要换成后端读取
     if (localStorage.getItem(source) == null) {
       this.http.get('assets/' + source + '.json').subscribe(response => {
-        console.log(response)
+        // console.log(response)
         response = this.adaptiveJson(response)
-        console.log(response)
+        // console.log(response)
         console.log(document.body.clientWidth)
         this.canvas.loadFromJSON(
           response,
@@ -214,7 +214,7 @@ export class FabricService {
 
   // 读取Canvas内容后大小自适应
   adaptiveJson(json) {
-    console.log(document.body.clientWidth)
+    // console.log(document.body.clientWidth)
     if (document.body.clientWidth > 1920 || document.body.clientWidth < 1900) {
       const scaleFactor = document.body.clientWidth / 1920
       json['backgroundImage']['scaleX'] *= scaleFactor

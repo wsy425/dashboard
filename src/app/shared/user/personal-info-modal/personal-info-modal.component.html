@@ -1,0 +1,21 @@
+<div nz-row>
+    <div nz-col [nzSpan]="8">
+        <nz-upload [nzBeforeUpload]="beforeUpload">
+            <nz-avatar [nzSize]="iconRem" [nzSrc]="imgScr" [nzAlt]="User">
+            </nz-avatar>
+        </nz-upload>
+
+    </div>
+
+    <div nz-col [nzSpan]="16">
+        <div>
+            <div class="title">用户名</div>
+            <p nz-typography nzEditable [(nzContent)]="User"></p>
+        </div>
+
+        <div>
+            <div class="title">邮箱</div>
+            <p nz-typography nzEditable [(nzContent)]="email"></p>
+        </div>
+    </div>
+</div>

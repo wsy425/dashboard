@@ -1,0 +1,13 @@
+.title {
+    font-size: 2.4rem;
+    color: #9590C7;
+}
+
+::ng-deep .ant-modal-title {
+    color: #9590C7;
+    font-size: 3rem;
+}
+
+::ng-deep .ant-upload {
+    margin: 1rem 0.5rem;
+}

@@ -4,6 +4,7 @@ import { fileUrl } from 'src/environments/environment'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SensorInfoService } from '../../service/sensor-info.service';
 import { DataSendingModalComponent } from '../setting/data-sending-modal/data-sending-modal.component'
+import { PersonalInfoModalComponent } from '../user/personal-info-modal/personal-info-modal.component'
 import { AlertService } from 'src/app/service/alert.service'
 import { AuthService } from '@abp/ng.core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
@@ -30,8 +31,31 @@ export class NavComponent implements OnInit {
   iconRem = 4.5 * this.rem
   time = "XXXX/XX/XX XX:XX:XX"
   User = "User"
+  imgScr: string
 
   // 用户头像按钮功能
+
+  // 个人信息设置
+  personalInfoManagement() {
+    const modal = this.modal.create({
+      nzTitle: '个人信息设置',
+      nzContent: PersonalInfoModalComponent,
+      nzFooter: [
+        {
+          label: '关闭',
+          onClick: () => modal.destroy()
+        },
+        {
+          label: '保存修改',
+          onClick(component): void {
+            this.loading = true;// 让提交按钮显示加载动画，防止重复提交
+            this.loading = component.upload();
+          }
+        }
+      ],
+      nzWidth: 50 * this.rem
+    })
+  }
   // 系统权限管理按钮
   authorityManagement() {
     this.router.navigateByUrl('/identity');
