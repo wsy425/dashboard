@@ -1,0 +1,25 @@
+#iteration {
+    position: relative;
+}
+
+.option {
+    width: 25rem;
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+}
+
+#iteration .upload {
+    position: absolute;
+    display: inline-block;
+    margin: 12rem 1rem;
+}
+
+::ng-deep .ant-modal-title {
+    color: #9590C7;
+    font-size: 3rem;
+}
+
+::ng-deep .ant-radio-group {
+    margin-left: 2rem;
+}

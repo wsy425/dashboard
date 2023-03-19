@@ -1,0 +1,19 @@
+<nz-radio-group [(ngModel)]="backgroundUrl" nzSize="large">
+    <span *ngFor="let background of backgroundList; let i=index" id="iteration">
+        <div class="option">
+            <img nz-image width="100%" [nzSrc]="background.url" [nzFallback]="fallback" alt="" />
+            <label nz-radio [nzValue]="background.url">{{background.name}}</label>
+        </div>
+
+        <div *ngIf="!backgroundList[i+1]" class="upload">
+            <nz-upload *abpPermission="'AbpIdentity.Roles'" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                [nzHeaders]="{ authorization: 'authorization-text' }" (nzChange)="handleChange($event)">
+                <button nz-button>
+                    <span nz-icon nzType="upload"></span>
+                    点击上传
+                </button>
+            </nz-upload>
+        </div>
+    </span>
+
+</nz-radio-group>

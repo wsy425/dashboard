@@ -1,10 +1,13 @@
 import { rendererTypeName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { FabricService } from '../../service/fabric.service';
 import { SensorInfoService } from '../../service/sensor-info.service'
 import { AlertService } from '../../service/alert.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { fileUrl } from 'src/environments/environment'
+import { BackgroundModalComponent } from './background-modal/background-modal.component'
+
 
 interface resProps {
   code: number
@@ -21,7 +24,7 @@ export class SingleParameterComponent implements OnInit {
   chineseName: string = '';
   paraID: string = '';
 
-  constructor(private http: HttpClient, public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService) {
+  constructor(private http: HttpClient, public fabricService: FabricService, public sensor: SensorInfoService, private alert: AlertService, private modal: NzModalService) {
     this.paraID = ''
   }
 
@@ -84,8 +87,29 @@ export class SingleParameterComponent implements OnInit {
 
   // 设置系统主视图按钮功能
   imageSetting() {
-    this.fabricService.setBackground('assets/back.jpeg', 100 * this.rem, 75 * this.rem)
-    this.alert.MessageAlert('success', "系统主视图设置成功", 1000)
+    const modal = this.modal.create({
+      nzTitle: '主视图背景设置',
+      nzContent: BackgroundModalComponent,
+      nzFooter: [
+        {
+          label: '关闭',
+          onClick: () => modal.destroy()
+        },
+        {
+          label: '保存修改',
+          onClick(component): void {
+            this.loading = true;// 让提交按钮显示加载动画，防止重复提交
+            this.loading = component.imageSave();
+            if (!this.loading) {
+              modal.destroy()
+            }
+          }
+        }
+      ],
+      nzWidth: 143 * this.rem
+    })
+    // this.fabricService.setBackground('assets/back.jpeg', 100 * this.rem, 75 * this.rem)
+    // this.alert.MessageAlert('success', "系统主视图设置成功", 1000)
   }
 
   // 保存页面配置至服务器按钮

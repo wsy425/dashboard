@@ -18,9 +18,13 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { TimeDomainChartComponent } from './single-parameter/time-domain-chart/time-domain-chart.component';
 import { FrequencyDomainChartComponent } from './single-parameter/frequency-domain-chart/frequency-domain-chart.component';
 import { MainViewComponent } from './main-view/main-view.component';
+import { BackgroundModalComponent } from './single-parameter/background-modal/background-modal.component';
 
 
 
@@ -40,7 +44,8 @@ import { MainViewComponent } from './main-view/main-view.component';
     SingleParameterComponent,
     TimeDomainChartComponent,
     FrequencyDomainChartComponent,
-    MainViewComponent
+    MainViewComponent,
+    BackgroundModalComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +54,9 @@ import { MainViewComponent } from './main-view/main-view.component';
     SharedModule,
     NzTabsModule,
     NzButtonModule,
+    NzRadioModule,
+    NzImageModule,
+    NzUploadModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
