@@ -12,14 +12,25 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 import { DataSendingModalComponent } from './setting/data-sending-modal/data-sending-modal.component';
 import { PersonalInfoModalComponent } from './user/personal-info-modal/personal-info-modal.component';
+import { SensorInfoModalComponent } from './setting/sensor-info-modal/sensor-info-modal.component';
+import { SensorSettingComponent } from './setting/sensor-info-modal/sensor-setting/sensor-setting.component';
 
 @NgModule({
   declarations: [
     NavComponent,
     DataSendingModalComponent,
     PersonalInfoModalComponent,
+    SensorInfoModalComponent,
+    SensorSettingComponent,
   ],
   imports: [
     CoreModule,
@@ -33,7 +44,14 @@ import { PersonalInfoModalComponent } from './user/personal-info-modal/personal-
     NzDividerModule,
     NzSwitchModule,
     NzTypographyModule,
-    NzUploadModule
+    NzUploadModule,
+    NzTabsModule,
+    NzSelectModule,
+    NzCollapseModule,
+    NzInputModule,
+    NzDescriptionsModule,
+    NzTagModule,
+    NzButtonModule
   ],
   exports: [
     CoreModule,

@@ -1,0 +1,122 @@
+<div>
+    <div *ngFor="let Param of this.statusParam;let i = index" class="paramSelect">
+        <div>选择常显传感器{{i+1}}</div>
+        <nz-select nzShowSearch [(ngModel)]="this.statusParam[i]">
+            <nz-option *ngFor="let sensor of this.sensors" [nzLabel]="sensor" [nzValue]="sensor"></nz-option>
+        </nz-select>
+    </div>
+
+    <nz-divider nzType="vertical"></nz-divider>
+    <div class="paramSelect">
+        <div>查找传感器</div>
+        <nz-select nzShowSearch nzAllowClear [(ngModel)]="this.searchActive" (ngModelChange)="search()"
+            nzPlaceHolder="查找传感器">
+            <nz-option *ngFor="let sensor of this.sensors;let i = index" [nzLabel]="sensor" [nzValue]="i"></nz-option>
+        </nz-select>
+    </div>
+
+    <nz-divider nzType="vertical"></nz-divider>
+    <button (click)="save()">save</button>
+</div>
+
+<nz-collapse>
+    <nz-collapse-panel *ngFor="let sensor of sensors;let i = index" [nzHeader]="sensor" [nzActive]="this.active[i]">
+        <nz-descriptions [nzTitle]="sensor" [nzExtra]="extraTpl">
+            <nz-descriptions-item nzTitle="中文名">
+                <input [(ngModel)]="this.sensorDict[sensor]['chineseName']" nzBorderless [disabled]="editStatus[i]" />
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="型号">
+                <input [(ngModel)]="this.sensorDict[sensor]['characterName']" nzBorderless [disabled]="editStatus[i]" />
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="单位">
+                <input [(ngModel)]="this.sensorDict[sensor]['unit']" nzBorderless [disabled]="editStatus[i]" />
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="是否支持算法">
+                <label (click)="swtichA(i)">{{this.Algorithm[i]?"支持":"不支持"}}</label>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="数据频率">
+                <label (click)="swtichF(i)">{{this.highFrequency[i]?"高频":"低频"}}</label>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="报警阈值个数">
+                <input type="number" [(ngModel)]="this.sensorDict[sensor]['warn']['num']" nzBorderless
+                    [disabled]="editStatus[i]" />
+            </nz-descriptions-item>
+
+            <nz-descriptions-item *ngFor="let info of this.sensorDict[sensor]['warn']['info'];let j = index;"
+                nzTitle="报警信息" [nzSpan]="3">
+                <div class="tag">
+                    <nz-tag [(nzColor)]="this.sensorDict[sensor]['warn']['statusColor'][j]">
+                        {{this.sensorDict[sensor]['warn']['statusColor'][j]}}</nz-tag>
+                </div>
+
+                <div class="Info"><br />
+                    <label><input [(ngModel)]="this.sensorDict[sensor]['warn']['info'][j]" nzBorderless
+                            [disabled]="editStatus[i]" /></label>
+                </div>
+                <div class="item">
+                    <label>阈值关系：</label>
+                    <nz-select [(ngModel)]="this.sensorDict[sensor]['warn']['limitType'][j]" nzBorderless
+                        [disabled]="editStatus[i]">
+                        <nz-option nzValue="high" nzLabel="高于"></nz-option>
+                        <nz-option nzValue="equal" nzLabel="等于"></nz-option>
+                        <nz-option nzValue="low" nzLabel="低于"></nz-option>
+                    </nz-select>
+                </div>
+                <div class="item">
+                    <label>阈值：</label>
+                    <input type="number" [(ngModel)]="this.sensorDict[sensor]['warn']['limitValue'][j]" nzBorderless
+                        [disabled]="editStatus[i]" style="width: 5rem;" />
+                </div>
+                <div class="item">
+                    <label>报警色：</label>
+                    <nz-select [(ngModel)]="this.sensorDict[sensor]['warn']['statusColor'][j]"
+                        [nzPlaceHolder]="this.sensorDict[sensor]['warn']['statusColor'][j]" nzBorderless
+                        [disabled]="editStatus[i]">
+                        <nz-option nzCustomContent nzValue='#FF6466' nzLabel="#FF6466">
+                            <nz-tag [nzColor]="'#FF6466'">#FF6466</nz-tag>
+                        </nz-option>
+                        <nz-option nzCustomContent nzValue="#FFD134" nzLabel="#FFD134">
+                            <nz-tag [nzColor]="'#FFD134'">#FFD134</nz-tag>
+                        </nz-option>
+                    </nz-select>
+                </div>
+
+                <div class="largeItem">
+                    <label>诊断结果：</label>
+                    <button nz-button nzType="primary" nzSize="small" nzShape="round"
+                        (click)="addROO(sensor,j,'result')" [disabled]="editStatus[i]">+</button>
+                    <br />
+                    <label
+                        *ngFor="let result of this.sensorDict[sensor]['warn']['result'][j];let count = index">{{count+1}}
+                        <input [(ngModel)]="this.sensorDict[sensor]['warn']['result'][j][count]" nzBorderless
+                            [disabled]="editStatus[i]" /></label>
+                </div>
+
+                <div class="largeItem">
+                    <label>操作建议：</label><button nz-button nzType="primary" nzSize="small" nzShape="round"
+                        (click)="addROO(sensor,j,'operation')" [disabled]="editStatus[i]">+</button><br />
+                    <label
+                        *ngFor="let operation of this.sensorDict[sensor]['warn']['operation'][j];let count = index">{{count+1}}
+                        <input [(ngModel)]="this.sensorDict[sensor]['warn']['operation'][j][count]" nzBorderless
+                            [disabled]="editStatus[i]" /></label>
+                </div>
+
+
+
+            </nz-descriptions-item>
+        </nz-descriptions>
+
+        <ng-template #extraTpl>
+            <button nz-button nzType="primary" nzSize="small" nzShape="round" (click)="addWarn(sensor)"
+                [disabled]="editStatus[i]">+</button>
+            <nz-switch [(ngModel)]="editStatus[i]" [nzCheckedChildren]="checkedTemplate"
+                [nzUnCheckedChildren]="unCheckedTemplate">
+            </nz-switch>
+            <ng-template #checkedTemplate><span nz-icon nzType="edit"></span></ng-template>
+            <ng-template #unCheckedTemplate><span nz-icon nzType="check"></span></ng-template>
+        </ng-template>
+
+
+
+    </nz-collapse-panel>
+</nz-collapse>

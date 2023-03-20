@@ -1,0 +1,5 @@
+<nz-tabset nzType="editable-card" nzHideAdd (nzClose)="closeTab($event)" nzTabPosition="left">
+    <nz-tab *ngFor="let tab of tabs; let i = index" [nzClosable]="i > this.sensor.sourceList.length-1" [nzTitle]="tab">
+        <app-sensor-setting [sensorInfo]="sensorInfo[tab]" [source]="tab"></app-sensor-setting>
+    </nz-tab>
+</nz-tabset>

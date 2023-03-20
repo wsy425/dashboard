@@ -1,0 +1,56 @@
+.paramSelect {
+    display: inline-block;
+    margin: 1rem;
+}
+
+.Info {
+    width: 15rem;
+    margin-left: 2rem;
+}
+
+.item {
+    width: 10rem;
+    margin-left: 2rem;
+}
+
+.largeItem {
+    width: 30rem;
+    margin-left: 2rem;
+}
+
+
+.paramSelect nz-select {
+    width: 20rem;
+}
+
+.tag {
+    position: relative;
+}
+
+.tag nz-tag {
+    position: absolute;
+    left: -8.5rem;
+    top: 0.5rem;
+}
+
+
+input {
+    background-color: transparent;
+    border: none;
+}
+
+::ng-deep .ant-btn-round {
+    margin: 0.5rem;
+}
+
+::ng-deep .anticon {
+    vertical-align: 0.2em;
+}
+
+// ::ng-deep .ant-descriptions-row {
+//     border-top: 1px solid #d9d9d9;
+// }
+
+// ::ng-deep .ant-descriptions-row:nth-child(2) {
+//     border-bottom: 1px solid #d9d9d9;
+// }

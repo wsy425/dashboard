@@ -4,6 +4,7 @@ import { fileUrl } from 'src/environments/environment'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SensorInfoService } from '../../service/sensor-info.service';
 import { DataSendingModalComponent } from '../setting/data-sending-modal/data-sending-modal.component'
+import { SensorInfoModalComponent } from '../setting/sensor-info-modal/sensor-info-modal.component'
 import { PersonalInfoModalComponent } from '../user/personal-info-modal/personal-info-modal.component'
 import { AlertService } from 'src/app/service/alert.service'
 import { AuthService } from '@abp/ng.core';
@@ -70,6 +71,30 @@ export class NavComponent implements OnInit {
 
 
   // 设置按钮功能
+
+  // 传感器阈值设置按钮
+  setSensorInfo() {
+    const modal = this.modal.create({
+      nzTitle: '传感器信息设置',
+      nzContent: SensorInfoModalComponent,
+      nzFooter: [
+        {
+          label: '新增数据源',
+          onClick(component): void {
+            this.loading = true;// 让提交按钮显示加载动画，防止重复提交
+            component.newTab();
+            this.loading = false
+          }
+        },
+        {
+          label: '关闭',
+          onClick: () => modal.destroy()
+        }
+      ],
+      nzWidth: 143 * this.rem
+    })
+  }
+
   // 数据发送设置按钮
   setDataSending() {
     const modal = this.modal.create({
