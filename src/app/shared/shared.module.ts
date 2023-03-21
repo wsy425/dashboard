@@ -19,6 +19,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { DataSendingModalComponent } from './setting/data-sending-modal/data-sending-modal.component';
 import { PersonalInfoModalComponent } from './user/personal-info-modal/personal-info-modal.component';
 import { SensorInfoModalComponent } from './setting/sensor-info-modal/sensor-info-modal.component';
@@ -51,7 +52,8 @@ import { SensorSettingComponent } from './setting/sensor-info-modal/sensor-setti
     NzInputModule,
     NzDescriptionsModule,
     NzTagModule,
-    NzButtonModule
+    NzButtonModule,
+    NzSkeletonModule
   ],
   exports: [
     CoreModule,

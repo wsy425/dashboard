@@ -192,6 +192,9 @@
         ],
         "highFrequency": [
             "TPL101"
+        ],
+        "reserve": [
+            "RS101"
         ]
     },
     "S2": {
@@ -380,7 +383,10 @@
             "TPL203",
             "TPL204"
         ],
-        "highFrequency": []
+        "highFrequency": [],
+        "reserve": [
+            "RS201"
+        ]
     },
     "S3": {
         "Dict": {
@@ -568,6 +574,9 @@
             "TPL303",
             "TPL304"
         ],
-        "highFrequency": []
+        "highFrequency": [],
+        "reserve": [
+            "RS301"
+        ]
     }
 }

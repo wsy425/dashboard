@@ -1,3 +1,8 @@
+.head {
+    display: flex;
+    align-items: center;
+}
+
 .paramSelect {
     display: inline-block;
     margin: 1rem;
@@ -6,6 +11,10 @@
 .Info {
     width: 15rem;
     margin-left: 2rem;
+
+    input {
+        width: 15rem;
+    }
 }
 
 .item {
@@ -20,7 +29,7 @@
 
 
 .paramSelect nz-select {
-    width: 20rem;
+    width: 15rem;
 }
 
 .tag {
@@ -29,7 +38,7 @@
 
 .tag nz-tag {
     position: absolute;
-    left: -8.5rem;
+    left: -7rem;
     top: 0.5rem;
 }
 
@@ -45,6 +54,12 @@ input {
 
 ::ng-deep .anticon {
     vertical-align: 0.2em;
+}
+
+:host ::ng-deep .ant-divider-vertical {
+    top: 0.2rem;
+    height: 6rem;
+    border-left: 0.3rem solid #9590C7
 }
 
 // ::ng-deep .ant-descriptions-row {

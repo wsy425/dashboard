@@ -87,11 +87,18 @@ export class NavComponent implements OnInit {
           }
         },
         {
+          label: '上传信息',
+          onClick(component): void {
+            this.loading = true;// 让提交按钮显示加载动画，防止重复提交
+            this.loading = component.uploadSensorInfo();
+          }
+        },
+        {
           label: '关闭',
           onClick: () => modal.destroy()
         }
       ],
-      nzWidth: 143 * this.rem
+      nzWidth: 145 * this.rem
     })
   }
 
