@@ -46,7 +46,7 @@ export class SensorInfoService {
   }
 
   // 确定当前输出的信息源
-  setSource(source) {
+  setSource(source: string) {
     this.source = source
     this.currentSensorDict = this.sensorDict[source]
     this.currentStatusList = this.statusList[source]
@@ -55,7 +55,7 @@ export class SensorInfoService {
   }
 
   // 更新传感器信息
-  refesh(info) {
+  refesh(info: Object) {
     this.sensorInfo = info
     this.sourceList = info["source"]
     this.getInfo()
@@ -64,6 +64,7 @@ export class SensorInfoService {
 
   // 重置传感器信息
   reset() {
+    // TODO:后续改成后端
     this.http.get('assets/SensorInfo.json').subscribe(response => {
       this.sensorInfo = response
       this.sourceList = this.sensorInfo["source"]
